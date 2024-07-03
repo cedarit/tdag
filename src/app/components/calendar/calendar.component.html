@@ -1,0 +1,48 @@
+<!-- <ion-header >
+    <ion-toolbar style="position: fixed; top: 0px " >
+     <ion-title style="margin-left:50px;font-size: 25px;"  >Calendar</ion-title>
+    </ion-toolbar>
+</ion-header> -->
+<ion-header>
+  <ion-toolbar class="titleIonSetting1">
+    <ion-buttons slot="end">
+      <ion-back-button class="back-btn"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="display: flex; align-items: center">Calendar</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="custom-container" style="height: 100%">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="Update Calendar"
+        refreshingSpinner="circles"
+        refreshingText="Refreshing..."
+      >
+      </ion-refresher-content>
+    </ion-refresher>
+    <mat-list role="list" class="event_list">
+      <div class="event_item" *ngFor="let event of calenderEvents">
+        <div style="display: flex; padding-top: 15px">
+          <div>
+            <strong
+              ><span class="date">{{ event.day }}</span> <br />
+              <span>{{ event.month }}</span></strong
+            >
+          </div>
+          <div style="margin: 0px 0 0 24px">
+            <strong
+              ><span class="title">{{ event.name }}</span> <br />
+              <span class="location">{{ event.location }}</span
+              ><br />
+              <span class="location">{{ event.time }}</span></strong
+            >
+            <p>{{ event.note }}</p>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-list>
+  </div>
+</ion-content>

@@ -1,0 +1,73 @@
+#brandColor{
+    background: linear-gradient(0deg, rgb(246, 239, 250) 0%,  rgb(246, 239, 250) 70%, #c47ef7 30%, #9506fc 90%) !important;
+}
+
+
+
+#pastorName{
+    font-size: 18 !important;
+    padding-left: 9px;
+    text-align: left;
+}
+
+#designation{
+    font-size: 9px !important;
+    padding: 0 !important;
+    color:#c47ef7;
+
+}
+
+#phoneNo{
+    padding-right: 0px !important;
+}
+
+
+.mat-header-cell:first-of-type{
+    padding: 8px !important;
+}
+
+.mat-column-desig{
+    font-size: 14px;
+    padding-left: 3px;
+    margin-right: 0px;
+    text-align: center;
+    
+    white-space: unset !important;
+    flex: 0 0 32% !important;
+    width: 28% !important;
+}
+
+.mat-column-phoneno{
+    display: none;
+}
+
+.mat-header-cell:first-of-type, mat-header-cell:first-of-type, mat-footer-cell:first-of-type{
+    padding-left: 8px !important;
+}
+
+
+.decorative-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background-color: white;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  button {
+    margin-top: 20px;
+  }
+  

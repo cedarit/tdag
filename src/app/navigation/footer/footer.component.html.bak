@@ -1,0 +1,93 @@
+<mat-toolbar class="footerStyle flex-container center">
+  <div class="footerLabel" *ngIf="isLoggedIn && isElement">
+    <a routerLink="/home" style="text-decoration: none">
+      <!-- <mat-icon class="footerIconColor" svgIcon="file-multiple"></mat-icon> -->
+      <img src="/assets/images/White-Icon-Home.png" alt="Home" width="22px" />
+
+      <div style="margin-left: -3px" class="footerLabel">Home</div>
+    </a>
+  </div>
+
+  <div class="footerLabel" *ngIf="!isLoggedIn">
+    <a routerLink="/login" style="text-decoration: none">
+      <!-- <mat-icon class="footerIconColor" svgIcon="file-multiple"></mat-icon> -->
+      <!-- <img src="/assets/images/White-Icon-Home.png" alt="Login" width="22px"> -->
+      <mat-icon style="color: white">input</mat-icon>
+      <div style="margin-left: -3px" class="footerLabel">Login</div>
+    </a>
+  </div>
+
+  <div
+    style="margin-left: 25px"
+    *ngIf="isLoggedIn && !isElement"
+    class="footerLabel"
+  >
+    <a routerLink="/membership-card" style="text-decoration: none">
+      <!-- <mat-icon class="footerIconColor" svgIcon="file-multiple"></mat-icon> -->
+      <!-- <img src="/assets/images/WhiteIcon-Upcoming.png" alt="Calendar" width="22px"> -->
+      <mat-icon style="color: white">card_membership</mat-icon>
+      <div style="margin-left: -3px" class="footerLabel">Membership Card</div>
+    </a>
+  </div>
+
+  <!-- Login / Logout-->
+  <!-- <div *ngIf="!isLoggedIn">
+  <a routerLink="/login" (click)="onTheLogin()" style = "text-decoration: none;" class="nItem">
+  <mat-icon>input</mat-icon> <span class="nav-caption">Login</span>   
+</a>
+</div> -->
+
+  <div style="margin-left: 25px" class="footerLabel">
+    <a routerLink="/calendar" style="text-decoration: none">
+      <!-- <mat-icon class="footerIconColor" svgIcon="file-multiple"></mat-icon> -->
+      <img
+        src="/assets/images/WhiteIcon-Upcoming.png"
+        alt="Calendar"
+        width="22px"
+      />
+
+      <div style="margin-left: -3px" class="footerLabel">Calendar</div>
+    </a>
+  </div>
+
+  <!-- <div style="margin-left: 25px;"  class="footerLabel">
+  <a routerLink="/income" style = "text-decoration: none;">
+
+      <img src="/assets/images/Donate-WhiteIcon.png" alt="Givings" width="22px">
+  
+  <div style="margin-left: -3px;" class="footerLabel">Givings</div>
+  </a>
+</div> -->
+
+  <div style="margin-left: 25px" class="footerLabel">
+    <a routerLink="/announcements" style="text-decoration: none">
+      <mat-icon style="color: white">update</mat-icon>
+      <!-- <img src="../../../assets/icon/icons8-tv-show-64.png" alt="Announcements" width="22px"> -->
+
+      <div style="margin-left: -3px" class="footerLabel">Updates</div>
+    </a>
+  </div>
+
+  <div class="footerLabel" style="margin-right: -20px">
+    <a routerLink="/contact-us" style="text-decoration: none">
+      <mat-icon style="color: whitesmoke">contacts</mat-icon>
+      <div class="footerLabel">Contact Us</div>
+    </a>
+  </div>
+
+  <!-- <div *ngIf="isUserLoggedInBool">
+  <a routerLink="/calendar" mat-mini-fab   > 
+    <mat-icon  class="footerIconColor" >event</mat-icon>
+  </a>
+  <div class="footerLabel">Calendar</div>
+</div>
+
+<div>
+    <a routerLink="/videos" mat-mini-fab   > 
+      <mat-icon  class="footerIconColor" >video_library</mat-icon>
+    </a>
+    <div class="footerLabel">Reports</div>
+  </div> -->
+
+  <div style="padding-top: 0%"></div>
+</mat-toolbar>

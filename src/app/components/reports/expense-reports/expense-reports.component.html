@@ -1,0 +1,230 @@
+<ion-header>
+  <ion-toolbar class="titleIonSetting1">
+    <ion-buttons slot="end">
+      <ion-back-button class="back-btn"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Expense Reports</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [forceOverscroll]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Expense Report"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <div
+    style="
+      padding: 0px;
+      background-color: rgb(12, 12, 12);
+      color: rgb(70, 58, 58);
+    "
+    fxLayout="row"
+    color="secondary"
+    fxLayoutAlign="space-between"
+  >
+    <!-- <a mat-flat-button routerLink="/carecell-home-page"> Back</a> -->
+  </div>
+  <div class="mat-form-container; custom-container" style="height: 100%">
+    <form
+      style="margin-bottom: 40px"
+      [formGroup]="accountRptForm"
+      (ngSubmit)="onFormSubmit()"
+    >
+      <mat-card class="card1">
+        <div *ngIf="error.isError" class="alert alert-danger">
+          {{ error.errorMessage }}
+        </div>
+
+        <!-- //start date datepicker -->
+        <mat-form-field style="color: black">
+          <mat-label>Start Date</mat-label>
+          <input
+            matInput
+            [min]="sdate"
+            [max]="edate"
+            formControlName="startDate"
+            [matDatepicker]="picker1"
+            placeholder="Choose a start date"
+            format="dd/MM/yyyy"
+            readonly
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker1"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            #picker1
+            startView="year"
+            [startAt]="sdate"
+          ></mat-datepicker>
+        </mat-form-field>
+
+        <!-- //end date datepicker -->
+        <mat-form-field>
+          <mat-label>End Date (Required)</mat-label>
+          <input
+            matInput
+            [min]="sdate"
+            [max]="edate"
+            formControlName="endDate"
+            class="endDate"
+            [matDatepicker]="picker"
+            placeholder="Choose a End date"
+            format="dd/MM/yyyy"
+            readonly
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            #picker
+            startView="year"
+            [startAt]="startDate1"
+          ></mat-datepicker>
+        </mat-form-field>
+      </mat-card>
+    </form>
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="Pastors Report"
+        refreshingSpinner="circles"
+        refreshingText="Refreshing..."
+      >
+      </ion-refresher-content>
+    </ion-refresher>
+
+    <!-- <mat-card>
+      <mat-form-field fxFlex="20%" class="filter">
+        <input
+          matInput
+          type="text"
+          (keyup)="doFilter($any($event.target).value)"
+          placeholder="Filter"
+        />
+      </mat-form-field>
+    </mat-card> -->
+
+    <div class="mat-form-container">
+      <!--   
+<div style="padding: 10px;background-color:rgb(228, 228, 228); color:rgb(70, 58, 58)" fxLayout="row"  color="secondary" fxLayoutAlign="space-between">
+    <a mat-flat-button routerLink="/carecell-home-page"> Back</a> -->
+      <!-- </div>  -->
+      <mat-table [dataSource]="dataSource1" matSort>
+        <!-- <ng-container matColumnDef="SN">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> S.No. </mat-header-cell>
+              <mat-cell *matCellDef="let i=index;">
+                  {{(paginatorRef.pageIndex * paginatorRef.pageSize) + (i + 1) }}.
+              </mat-cell>
+          </ng-container> -->
+        <ng-container matColumnDef="pastorname">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="fs"
+            id="nameLabel"
+            >Name</mat-header-cell
+          >
+          <mat-cell *matCellDef="let row" class="fs" id="nameData">
+            {{ row.SourceContact }}
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="date">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="fs"
+            id="dateLabel"
+          >
+            Date
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="fs" id="dateData">
+            {{ formatDate(row.Date) }}</mat-cell
+          >
+        </ng-container>
+        <!-- <ng-container matColumnDef="gender">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> gender </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.status_id}} </mat-cell>
+  </ng-container> -->
+        <ng-container matColumnDef="amt">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="fs"
+            id="amtLabel"
+          >
+            Amount
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="fs">
+            {{ row.dateWiseExpense }}
+          </mat-cell>
+        </ng-container>
+
+        <!-- 
+          <ng-container matColumnDef="type">
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="fs" id="typeLabel"> Type </mat-header-cell>
+              <mat-cell *matCellDef="let row" class="fs" id="typeData" >
+                <ion-button mat-raised-button style="height:95%;"  (click)="openDialog(row.FinType)">{{getFirstLetters(row.FinType)}}</ion-button>  
+              </mat-cell>
+          </ng-container> -->
+
+        <ng-container matColumnDef="type">
+          <mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            class="fs"
+            id="typeLabel"
+          >
+            Type / Description
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="fs" id="typeData">
+            <ion-button
+              mat-raised-button
+              style="
+                width: 100px;
+                color: black !important;
+                font-size: 8px !important;
+                background-color: rgb(190, 247, 247);
+              "
+              color="antiquewhite"
+              (click)="openDialog(row.Type)"
+              >{{ row.Type }} / {{ row.dis }}</ion-button
+            >
+          </mat-cell>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="dis">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="fs" id="typeLabel"> Description </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="fs" id="typeData">
+            <ion-button mat-raised-button style="color:black !important;font-size:8px !important;background-color: rgb(190, 247, 247);" color="black" >{{row.dis}}</ion-button> 
+          </mat-cell>
+       </ng-container> -->
+
+        <!-- <ng-container matColumnDef="dis">
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="fs"> Description </mat-header-cell>
+              <mat-cell *matCellDef="let row" class="fs">  {{row.dis}} </mat-cell>
+          </ng-container> -->
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+
+      <mat-paginator
+        #paginatorRef
+        [length]="length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        [showFirstLastButtons]="true"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</ion-content>

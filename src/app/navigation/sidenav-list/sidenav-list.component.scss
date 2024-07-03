@@ -1,0 +1,84 @@
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover,
+a:active {
+  color: white;
+}
+
+.nav-caption {
+  display: inline-block;
+  padding-left: 14px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.top-item {
+  margin-top: 0px;
+}
+::ng-deep .mat-mdc-list-item-unscoped-content {
+  display: flex !important;
+}
+
+::ng-deep .nItem mat-icon {
+  color: #fff;
+}
+
+.mat-nav-list .mat-list-item {
+  height: 40px;
+}
+
+.menuImageHeader {
+  background-color: rgb(255 255 255);
+  min-width: 218px;
+  margin-top: 20px;
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+::ng-deep .bgImage {
+  background-color: #021e2b !important; //whitesmoke
+  // background:linear-gradient(#0066B8, #0066B8);//, url("./images/ChurchHomeKompallyCenterPortrait.jpg");
+  //background-image: url("../assets/images/threeCrossPortrait.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(214, 214, 214);
+  background-blend-mode: unset;
+}
+::ng-deep .mat-nav-list .mat-list-item {
+  color: white;
+  height: 30px !important;
+}
+// .mat-drawer-inner-container {
+//     background-color: red;
+//     background:linear-gradient(rgba(0,0,0, .5), rgba(0,0,0,.5)), url("./ChurchHomeKompallyCenterPortrait.jpg");
+// }
+.versionInfo {
+  position: relative;
+  margin-bottom: 5px;
+  margin-right: 2px;
+  font-size: small;
+  margin-left: 15px;
+  margin-top: 50px;
+  color: #aaaaaa;
+}
+
+// --mdc-list-list-item-one-line-container-height: 48px;
+
+// -webkit-appearance:none;-moz-appearance:none; was inserted in node_modules/@angular/materaial/prebuilt-themes #indigo-pink.css
+
+.hide-item {
+  display: none;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}

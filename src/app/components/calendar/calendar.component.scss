@@ -1,0 +1,30 @@
+.event_list {
+  margin-top: 15px;
+  margin-bottom: 55px;
+  padding-left: 25px;
+  // background-color: rgb(189, 183, 177);
+  background-color: rgb(250, 242, 234);
+
+  //  opacity: 0.8;
+}
+.event_list event_item {
+  border-top: 1px solid #cdcdcd;
+  // padding-top:5px;
+}
+.event_list .date {
+  font-size: 30px;
+}
+.event_list .title {
+  font-size: 20px;
+}
+.event_list strong {
+  // color:#011A52;4055cf
+  color: #4055cf;
+}
+.event_list .location {
+  color: #68696d;
+}
+
+.titleIonSetting1 {
+  margin-top: 24px;
+}

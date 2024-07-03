@@ -1,0 +1,26 @@
+// ::ng-deep .mat-mdc-form-field {
+//   width: 90%;
+// }
+
+.customContainer {
+  //   height: 400px; /* Adjust the height as needed */
+  overflow-y: auto;
+}
+
+.titleIonSetting1 {
+  margin-top: 24px;
+}
+
+.multiline-title {
+  white-space: normal; /* Allow multiple lines */
+  text-align: center;
+}
+
+.userCard {
+  // display: flex ;
+  align-items: left !important;
+  text-align: left !important;
+  background-color: whitesmoke;
+  color: black;
+  height: 30px;
+}

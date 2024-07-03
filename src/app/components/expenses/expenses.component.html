@@ -1,0 +1,171 @@
+<ion-header>
+  <ion-toolbar class="titleIonSetting1">
+      <ion-buttons slot="end">
+          <ion-back-button class="back-btn"></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+          Add Expenses
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [forceOverscroll]="true">
+  <div class="custom-container" style="height: 100%;">
+      <form class="mat-form-container" style="margin-bottom:50px" [formGroup]="expensesForm" (ngSubmit)="onFormSubmit()">
+          <mat-card class="card1">
+              <div class="parent">
+
+                <mat-form-field>
+                  <mat-label>Paid to</mat-label>
+                  <input required matInput [formControl]="selectedDonorObj"
+                      style='font-size: small;color:rgb(214, 47, 47)' type="text" aria-label="Donor"
+                      [matAutocomplete]="auto">
+                  <!-- <mat-placeholder style="color:rgb(218, 32, 32); ">Search Donor:</mat-placeholder> -->
+
+                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                      <mat-option *ngFor="let donor of filteredOptions | async" [value]="donor">
+                          {{donor.displayName}}
+                      </mat-option>
+                  </mat-autocomplete>
+              </mat-form-field>
+
+                <mat-form-field>
+                  <input matInput [min]="minDate" [max]="maxDate" required formControlName="recDate" [matDatepicker]="myDatepicker" class="asterix--before" placeholder="Date*" readonly>
+                  <mat-datepicker-toggle [for]="myDatepicker" matSuffix></mat-datepicker-toggle>
+                  <mat-datepicker #myDatepicker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <!-- <mat-label>No of Attendees</mat-label> -->
+                  <mat-label>Type</mat-label>
+                  <select matNativeControl formControlName="payMode" required>
+                    <option *ngFor="let pay of PayModeList" value={{pay.label}}>{{pay.label}}</option>   
+                  </select>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <!-- <mat-label>No of Attendees</mat-label> -->
+                  <mat-label>Status</mat-label>
+                  <select matNativeControl formControlName="inStatus" >
+                    <option *ngFor="let incomeStatus of ContributionStatusList" value={{incomeStatus.label}}>{{incomeStatus.label}}</option>     
+                  </select>
+                </mat-form-field>  
+
+                <mat-form-field>
+                  <input matInput  formControlName="amt" placeholder="Amount" type="text" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input matInput formControlName="desc" placeholder="Description" type="text">
+                </mat-form-field>
+
+
+                <mat-card id="fileUpload">
+                  <mat-card-title id="ufTitle">Upload File</mat-card-title>
+                  <mat-card-content>
+                    <input type="file" formControlName="file2Upload" (change)="onFileSelected($event)" />
+                    <!-- <button mat-raised-button color="primary" (click)="uploadFile()">Upload</button> -->
+                  </mat-card-content>
+                </mat-card>
+                
+
+                          
+                <!-- <mat-form-field>
+                  <mat-label>Contact</mat-label>                  
+                      <input  
+                      required matInput [formControl] ="selectedDonorObj" 
+                      style='font-size: small;color:rgb(214, 47, 47)'
+                      type="text"
+                      aria-label="Donor"
+                      [matAutocomplete]="auto"> -->
+
+                          <!-- <mat-placeholder style="color:rgb(218, 32, 32); ">Search Donor:</mat-placeholder> -->
+                      
+                  <!-- <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let donor of filteredOptions | async" [value]="donor">
+                      {{donor.displayName}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>  -->
+                
+                <!-- <mat-form-field>
+                  <mat-label>Source Contact</mat-label>                  
+                      <input  
+                      required matInput [formControl] ="selectedDonorObj" 
+                      style='font-size: small;color:rgb(214, 47, 47)'
+                      type="text"
+                      aria-label="Donor"
+                      [matAutocomplete]="auto">
+
+                                    <mat-placeholder style="color:rgb(218, 32, 32); ">Search Donor:</mat-placeholder> -->
+                      
+                  <!-- <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let donor of filteredOptions | async" [value]="donor">
+                      {{donor.displayName}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>   -->
+
+                <!-- <mat-form-field>
+                  <mat-label>Assignee Contact</mat-label>                  
+                      <input  
+                      required matInput [formControl] ="selectedDonorObj" 
+                      style='font-size: small;color:rgb(214, 47, 47)'
+                      type="text"
+                      aria-label="Donor"
+                      [matAutocomplete]="auto"> -->
+
+                  <!-- <mat-placeholder style="color:rgb(218, 32, 32); ">Search Donor:</mat-placeholder> -->
+                      
+                  <!-- <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let donor of filteredOptions | async" [value]="donor">
+                      {{donor.displayName}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>  -->
+
+
+                
+                <!-- <mat-form-field> -->
+                                                <!-- <mat-label>No of Attendees</mat-label> -->
+                  <!-- <mat-label>Case</mat-label>
+                  <select matNativeControl formControlName="finType" required>
+                    <option *ngFor="let fType of FinTypeList" value={{fType.name}}>{{fType.name}}</option>
+                  </select>
+                </mat-form-field> -->
+
+                
+
+                
+
+                <!-- <div class="text-center">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!expensesForm.valid">Submit</button>
+                    <a [routerLink]="['/home']">
+                      <button color="warn" class="ml-4" mat-raised-button>Cancel</button>
+                    </a>
+                </div> -->
+
+    <!-- Submit and Cancel Buttons -->
+    <!-- <div fxLayout="row" fxLayoutAlign="space-evenly">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!expensesForm.valid">Submit</button>
+        <a [routerLink] = "['/home']">
+          <button style="margin-left: 50px;" color="warn" mat-raised-button (click)="onCancel()">Cancel</button>
+        </a>
+    </div> -->
+
+    <div fxLayout="row" fxLayoutAlign="space-evenly" class="text-center" style="margin-top: 10px; margin-bottom: 10px;">
+      <button mat-raised-button color="primary" type="submit"
+          [disabled]="!expensesForm.valid">Submit</button>
+      <a [routerLink]="['/home']">
+          <button style="margin-left: 50px;" color="warn" mat-raised-button
+              (click)="onCancel()">Cancel</button>
+      </a>
+    </div>
+
+              </div>
+          </mat-card>
+      </form>
+  </div>
+
+ 
+</ion-content>

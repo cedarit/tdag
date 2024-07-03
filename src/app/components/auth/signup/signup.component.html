@@ -1,0 +1,63 @@
+<!-- <ion-header >
+    <ion-toolbar style="position: fixed; top: 0px " >
+     <ion-title style="margin-left:50px;font-size: 25px;"  >Calendar</ion-title>
+    </ion-toolbar>
+</ion-header> -->
+<ion-header>
+  <ion-toolbar class="titleIonSetting1">
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title style="display: flex; align-items: center">Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form
+    style="margin-bottom: 50px"
+    [formGroup]="signupform"
+    (ngSubmit)="onFormSubmit()"
+  >
+    <mat-card class="cardForm" fxLayout="column" fxLayoutAlign="center">
+      <mat-form-field>
+        <mat-label>Email Id (Required)</mat-label>
+        <input
+          matInput
+          required
+          formControlName="emailid"
+          placeholder="EmailId"
+          type="email"
+          pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([\.]{1}[a-zA-Z]{2,}|[\.]{1}[a-zA-Z]{2,}[\.]{1}[a-zA-Z]{2,})"
+        />
+        <mat-error *ngIf="!signupform.get('emailid').valid"
+          >Please enter valid email id</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Mobile (Required)</mat-label>
+        <input
+          type="number"
+          matInput
+          placeholder="Your Phone No"
+          formControlName="phoneno"
+          required
+          type="text"
+          maxlength="10"
+          pattern="[1-9]{1}[0-9]{9}"
+        />
+        <mat-error *ngIf="!signupform.get('phoneno').valid"
+          >Please 10 digits</mat-error
+        >
+        <!-- <mat-hint align="end">{{pwInput.value?.length}} / 10</mat-hint> -->
+      </mat-form-field>
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="!signupform.valid"
+      >
+        Submit
+      </button>
+    </mat-card>
+  </form>
+</ion-content>

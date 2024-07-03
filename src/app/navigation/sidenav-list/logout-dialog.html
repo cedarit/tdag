@@ -1,0 +1,45 @@
+<div style="text-align: center; margin: 10px">Logout?</div>
+<div mat-dialog-actions>
+  <!-- <button mat-flat-button color="warn"  (click)="onNoClick()">No Thanks</button>
+      <button mat-flat-button color="primary"  (click)="onYesClick()">Yes, Logout</button> -->
+  <div
+    style="display: flex; justify-content: space-evenly; align-items: center"
+  >
+    <!-- <div style="justify-content: center; display: flex;"> -->
+    <button
+      style="
+        border-radius: 5px;
+        padding: 10px;
+        background-color: rgb(63, 63, 252);
+        color: white;
+        border: none;
+      "
+      type="button"
+      mat-raised-button
+      mat-button
+      (click)="onNoClick()"
+    >
+      Cancel
+    </button>
+    <!-- </div>
+        <div style="justify-content: center;display: flex"> -->
+    <button
+      style="
+        border-radius: 5px;
+        padding: 10px;
+        background-color: rgb(63, 63, 252);
+        color: white;
+        margin: 5px;
+        background-color: rgb(252, 81, 81);
+        color: white;
+      "
+      type="button"
+      mat-button
+      class="logoutBtn"
+      (click)="onYesClick()"
+    >
+      Logout
+    </button>
+    <!-- </div> -->
+  </div>
+</div>

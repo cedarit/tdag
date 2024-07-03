@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar class="titleIonSetting1">
+    <ion-buttons slot="end">
+      <ion-back-button class="back-btn"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="display: flex; align-items: center">
+      Membership Card
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-header>
+  <ion-toolbar class="titleIonSetting1">
+      <ion-title class="text-ionicBlue">Membership Card</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div style="background-color: black !important; margin-bottom: -1px">
+    <br />
+  </div>
+
+  <div style="background-color: black !important; height: 100%">
+    <ion-card class="card-with-grid" style="margin-top: 0px">
+      <ion-card-content>
+        <div class="menuImageHeader">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="2">
+                <!-- This will create a column that occupies half of the row -->
+                <!-- <ion-img style="height: 50px; background-color: #d4d4d6;margin-right: -10px;"  src="../../../assets/icon/qrCodeImg.png"></ion-img> -->
+              </ion-col>
+              <ion-col size="12">
+                <!-- This will create another column that occupies the other half of the row -->
+                <ion-img
+                  style="
+                    margin-left: -10px;
+                    height: 50px;
+                    background-color: #d4d4d6;
+                  "
+                  src="../../../assets/images/APAG-logo.png"
+                ></ion-img>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <div class="container">
+          <div
+            class="imgcolumn"
+            style="margin-top: 10px; margin-right: -60px; margin-left: -2px"
+          >
+            <img
+              [src]="url"
+              onerror="this.src = '../../../assets/images/man-icon-free-vector.jpg'"
+              style="width: 120px; height: 100px"
+            />
+          </div>
+          <div class="datacolumn">
+            <mat-grid-list cols="1" rowHeight="35px" style="color: whitesmoke">
+              <mat-grid-tile
+                style="margin-top: -2px !important"
+                class="mat-grid-tile-content"
+              >
+                Name: {{ displayName }}</mat-grid-tile
+              >
+              <mat-grid-tile
+                style="margin-top: -12px !important"
+                class="mat-grid-tile-content"
+              >
+                Mobile: {{ phoneNumber }}</mat-grid-tile
+              >
+              <!-- <mat-grid-tile
+                style="margin-top: -24px !important"
+                class="mat-grid-tile-content"
+              >
+                Membership No: {{ uiid }}</mat-grid-tile
+              >
+              <mat-grid-tile
+                style="margin-top: -36px !important"
+                class="mat-grid-tile-content"
+              >
+                Des: {{ designation }}</mat-grid-tile
+              > -->
+            </mat-grid-list>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <hr />
+    <div
+      class="givingsButton"
+      style="
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <button mat-raised-button style="background-color: darkblue">
+        <a
+          mat-list-item
+          routerLink="/pastoreport"
+          class="nItem"
+          style="text-decoration: none; color: black"
+        >
+          <span id="myGivingsBtn">My Givings</span>
+        </a>
+      </button>
+    </div>
+
+    <!-- <app-pastoreport></app-pastoreport> -->
+  </div>
+</ion-content>

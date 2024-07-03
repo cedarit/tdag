@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar class="titleIonSetting1">
+    <ion-buttons slot="end">
+      <ion-back-button class="back-btn"></ion-back-button>
+    </ion-buttons>
+    <ion-title
+      style="
+        color: rgb(228, 230, 230);
+        display: flex;
+        align-items: center;
+        text-align: center;
+      "
+      >Contact Us</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="contactContent">
+  <div class="custom-container">
+    <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+          <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Update Contact Info" refreshingSpinner="circles" refreshingText="Refreshing...">
+          </ion-refresher-content>
+      </ion-refresher> -->
+    <!-- <app-announcements></app-announcements> -->
+
+    <div id="imageId">
+      <ion-img src="../../assets/images/Christian+Concert.jpg"></ion-img>
+    </div>
+
+    <ion-card class="card">
+      <br />
+      <ion-card-header class="headerCard"
+        ><br />
+        Telangana Districts' Assemblies of God </ion-card-header
+      ><br />
+      <hr style="color: blue" />
+      <ion-card-content>
+        <!-- <h2><span class="blue-text">T D A G</span></h2>
+  <p>Andhra Pradesh, Telangana, INDIA</p>
+  <p><span class="blue-text">Phone: </span> 9849721295 / 9849187697 / 8897922108  </p>
+  <p><span class="blue-text">Email:</span>principal.apbc@gmail.com</p>
+  <p><span class="blue-text">Website:</span>apbiblecollege.com</p> -->
+
+        <h2><span class="blue-text">T D A G</span></h2>
+        <!-- <p><span class="blue-text">Name: </span> {{ contactInfo.name }}</p>     -->
+        <p>
+          <span class="blue-text">Address: </span> {{ contactInfo.address }}
+        </p>
+        <p>
+          <span class="blue-text">Mobile: </span> {{ contactInfo.mobile1 }} /
+          {{ contactInfo.mobile2 }}
+        </p>
+        <p><span class="blue-text">Email:</span>{{ contactInfo.email }}</p>
+        <p><span class="blue-text">Website:</span>{{ contactInfo.website }}</p>
+
+        <!-- <div>
+    <h2>Contact Details</h2>
+    <ul>
+      <li><strong>Name:</strong> {{ contactInfo.name }}</li>
+      <li><strong>Mobile:</strong> {{ contactInfo.mobile }}</li>
+      <li><strong>Email:</strong> {{ contactInfo.email }}</li>
+      <li><strong>Website:</strong> {{ contactInfo.website }}</li>
+    </ul>
+  </div>  -->
+      </ion-card-content>
+      <!-- <div style="padding-bottom:60%"></div> -->
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,194 @@
+<div class="Title">
+  <!-- <ion-img style="height:56px" src='../../assets/images/covidTelanganaHeader.png'></ion-img> -->
+  <ion-img
+    style="
+      height: 50px !important;
+      font: bold;
+      background: rgb(247, 246, 246) !important;
+    "
+    src="../../../assets/images/APAG-logo.png"
+  ></ion-img>
+
+  <!-- <ion-title class="multiline-title">
+    Line 1
+    <br />
+    Line 2
+  </ion-title> -->
+  <ion-title
+    class="multiline-title"
+    style="
+      color: white;
+      display: flex;
+      font-size: 17px;
+      text-align: center;
+      height: 57px;
+    "
+    class="welcome"
+    >Telugu Districts of SIAG <br />
+    WELCOME</ion-title
+  >
+</div>
+<div class="mainContainer">
+  <!-- <ion-header style="position: absolute">
+    <ion-toolbar>
+      <ion-title
+        style="font-size: 25px; text-align: center; height: 57px"
+        class="welcome"
+      >Welcome</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+
+  <ion-content>
+    <!-- <div
+      style="
+        display: flex;
+        align-items: center;
+        color: white;
+        font-size: 20px;
+        height: 57px;
+      "
+      class=""
+    >
+      Welcome
+    </div> -->
+    <div class="mainContainer">
+      <mat-card class="">
+        <!-- <mat-card-title></mat-card-title> -->
+        <mat-card-content>
+          <form [formGroup]="form" (ngSubmit)="loginSubmit()" class="mainForm">
+            <div
+              style="margin-top: 120px !important"
+              class="form-row"
+              fxLayout="row"
+              fxLayoutAlign="space-evenly  center"
+            >
+              <label for="userName" style="color: white">User Name: </label>
+              <input
+                id="username"
+                type="text"
+                matInput
+                placeholder="User Name"
+                formControlName="username"
+              />
+            </div>
+            <br />
+
+            <div
+              class="form-row"
+              fxLayout="row"
+              fxLayoutAlign="space-evenly  center"
+            >
+              <label for="password" style="color: white">Password: </label>
+              <input
+                [attr.type]="showPassword ? 'text' : 'password'"
+                [(ngModel)]="password"
+                name="password"
+                class="password"
+                type="password"
+                matInput
+                placeholder="Password"
+                formControlName="password"
+                (input)="handlePasswordInput($event)"
+              />
+            </div>
+
+            <!-- <label style="margin-top:10px;margin-left:110px;color: rgb(85, 85, 250);">
+        Show Password
+        <input type="checkbox" (change)="togglePasswordVisibility()">
+      </label> -->
+            <br />
+            <mat-card class="forgotPassword">
+              <mat-card-content>
+                <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                  <div class="button">
+                    <button
+                      type="button"
+                      mat-stroked-button
+                      color="secondary"
+                      (click)="onForgotPassword()"
+                    >
+                      Forgot Password?
+                    </button>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+            <!-- <br /><br /><br /> -->
+
+            <!-- <p>
+        <mat-form-field [ngStyle]="{'color':'white'}"> -->
+            <!-- <input style='font-size: x-large ;color:white;' type="text" matInput placeholder="Username" formControlName="username"> -->
+            <!-- <input style='font-size: x-large ;color:white;' type="text" matInput formControlName="username">
+
+          <mat-placeholder style="color:whitesmoke">Username:</mat-placeholder>
+        </mat-form-field>
+      </p> -->
+
+            <!-- <p>
+        <mat-form-field>
+          <input style='font-size: x-large; color:white;' type="password" matInput  formControlName="password">
+          <mat-placeholder style="color:whitesmoke">Password:</mat-placeholder>
+
+        </mat-form-field>
+      </p> -->
+
+            <p *ngIf="error" class="error">
+              {{ error }}
+            </p>
+
+            <!-- <div fxLayout="row" fxLayoutAlign="space-evenly center">
+        <div class="button">
+          <button type="button" mat-stroked-button color="primary" (click)="onCancel()">Cancel</button>
+        </div>
+        <div style="margin-left: 70px !important;" class="button btn-stroked">
+            <button type="submit" mat-stroked-button color="white">Login</button>
+        </div>
+      </div> -->
+
+            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+              <div class="button">
+                <!-- <button type="button" mat-raised-button	 color="secondary" (click)="onCancel()">Cancel</button> -->
+
+                <button
+                  type="submit"
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="!form.valid"
+                >
+                  Login
+                </button>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- <hr
+        style="border: none; height: 2px; background-color: rgb(57, 76, 255)"
+      /> -->
+
+      <mat-card class="signupBtn">
+        <mat-card-content>
+          <div fxLayout="row" fxLayoutAlign="space-evenly  center center">
+            <div
+              style="margin-right: 20px; color: #afa2a2"
+              fxLayoutAlign="center center"
+            >
+              New User?
+            </div>
+            <div class="signupButton">
+              <button
+                type="button"
+                mat-stroked-button
+                color="secondary"
+                (click)="onSignUp()"
+              >
+                Sign Up
+              </button>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </ion-content>
+</div>
