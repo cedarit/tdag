@@ -1,0 +1,227 @@
+<ion-header style="max-width: 600px !important">
+  <ion-toolbar class="titleIonSetting1">
+    <ion-buttons slot="end">
+      <ion-back-button
+        defaultHref="/membership-card"
+        style="color: whitesmoke"
+        class="back-btn"
+      ></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title>My ({{ capitalizeFirstLetter(mName) }}) Giving</ion-title> -->
+
+    <ion-title
+      class="multiline-title"
+      style="
+        color: white;
+        display: flex;
+        font-size: 17px;
+        text-align: center;
+        height: 45px;
+      "
+      class="welcome"
+      >My Givings <br />
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="max-width: 600px !important">
+  <div class="customContainer" style="height: 94vh">
+    <!-- <mat-card class="userCard">
+      <mat-label style="text-align: center"
+        >Rev. {{ capitalizeFirstLetter(mName) }}</mat-label
+      >
+    </mat-card> -->
+
+    <form
+      class="mat-form-container"
+      style="margin-bottom: 60px"
+      [formGroup]="incomeForm"
+      (ngSubmit)="onFormSubmit()"
+    >
+      <mat-card class="card1">
+        <div class="parent" style="margin-bottom: 16px">
+          <mat-label
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              min-height: 60px;
+              font-size: 20px;
+              font: bold;
+              background-color: rgb(157, 223, 250);
+            "
+            >Rev. {{ capitalizeFirstLetter(mName) }}
+          </mat-label>
+          <!-- Donor's Name -->
+          <!-- <mat-form-field>
+            <input
+             matInput
+              [formControl]="selectedDonorObj"
+              style="font-size: small; color: rgb(214, 47, 47)"
+              type="text"
+              aria-label="Donor"
+              [matAutocomplete]="auto"
+            />
+
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option
+                *ngFor="let donor of filteredOptions | async"
+                [value]="donor"
+              >
+                {{ donor.displayName }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>  -->
+
+          <!-- Church Name -->
+          <!-- <div>
+                        <mat-form-field>  
+                          <mat-label>Church Name</mat-label>                      
+                          <input  
+                          required matInput [formControl] ="selectedDonorObj" 
+                          style='font-size: small;color:rgb(214, 47, 47)'
+                          type="text"
+                          aria-label="Church"
+                          [matAutocomplete]="auto">
+                          
+                          
+                          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayChFn">
+                              <mat-option *ngFor="let church of filteredOptions | async" [value]="church">
+                                   {{church.displayName}}
+                              </mat-option>
+                          </mat-autocomplete>
+                          
+                        </mat-form-field>
+                        </div> -->
+
+          <!-- <mat-form-field>  
+                        <mat-label>Church Name</mat-label>                      
+                        <input  
+                        required matInput [formControl] ="selectedChurchObj" 
+                        style='font-size: small;color:rgb(214, 47, 47)'
+                        type="text"
+                        aria-label="Church"
+                        [matAutocomplete]="auto">
+              
+                        
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayChFn">
+                            <mat-option *ngFor="let church of filteredOptions | async" [value]="church">
+                                 {{church.churchName}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field> -->
+
+          <!-- Amount -->
+          <mat-form-field>
+            <mat-label>Amount</mat-label>
+            <input
+              matInput
+              required
+              formControlName="amt"
+              placeholder="Amount*"
+              type="number"
+            />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Payment Mothod</mat-label>
+            <select matNativeControl formControlName="payMode">
+              <option *ngFor="let pay of PayModeList" value="{{ pay.name }}">
+                {{ pay.name }}
+              </option>
+            </select>
+          </mat-form-field>
+
+          <!-- <mat-form-field>
+            <mat-label>Contribution Status</mat-label>
+            <select matNativeControl formControlName="inStatus">
+              <option
+                *ngFor="let incomeStatus of ContributionStatusList"
+                value="{{ incomeStatus.name }}"
+              >
+                {{ incomeStatus.name }}
+              </option>
+            </select>
+          </mat-form-field> -->
+
+          <mat-form-field>
+            <mat-label>Financial Type</mat-label>
+            <select matNativeControl formControlName="finType">
+              <option
+                *ngFor="let fType of FinTypeList"
+                value="{{ fType.name }}"
+              >
+                {{ fType.name }}
+              </option>
+            </select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Received Date (Required)</mat-label>
+            <input
+              matInput
+              [min]="minDate"
+              [max]="maxDate"
+              required
+              formControlName="recDate"
+              [matDatepicker]="myDatepicker"
+              placeholder="Received Date (Required)"
+              readonly
+            />
+            <mat-datepicker-toggle
+              [for]="myDatepicker"
+              matSuffix
+            ></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Cheque Number</mat-label>
+            <input
+              matInput
+              formControlName="checkNo"
+              placeholder="Cheque Number"
+              type="text"
+            />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Transaction ID</mat-label>
+            <input
+              matInput
+              formControlName="transNo"
+              placeholder="Transaction ID"
+              type="text"
+            />
+          </mat-form-field>
+
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-evenly"
+            class="text-center"
+            style="margin-top: 10px"
+          >
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="!incomeForm.valid"
+            >
+              Submit
+            </button>
+            <a [routerLink]="['/membership-card']">
+              <button
+                style="margin-left: 50px"
+                color="warn"
+                mat-raised-button
+                (click)="onCancel()"
+              >
+                Cancel
+              </button>
+            </a>
+          </div>
+        </div>
+      </mat-card>
+    </form>
+  </div>
+</ion-content>

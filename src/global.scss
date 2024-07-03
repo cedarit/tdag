@@ -1,0 +1,123 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+// added by pankaj for angular themes
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+// Added by pankaj to change Fonts- Typography: https://stackoverflow.com/questions/43747518/angular-material-and-changing-fonts
+@import "@angular/material/theming";
+
+@import url("https://fonts.googleapis.com/css?family=Raleway|Quicksand|Spartan&display=swap");
+//  @import "~@angular/material/prebuilt-themes/purple-green.css";
+
+// $custom-typography: mat-typography-config($font-family: '"Raleway","Quicksand","Spartan","Nanum Gothic", sans-serif');
+// @include mat-core($custom-typography);
+
+html,
+body {
+  height: 100%;
+  font-family: "Raleway", "Quicksand", "Spartan", "Nanum Gothic", sans-serif;
+  // for the web page display
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+// * {
+//     box-sizing: border-box;
+//     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+//     -webkit-tap-highlight-color: transparent;
+//     -webkit-touch-callout: none;
+//   }
+
+ion-content {
+  //https://www.freakyjolly.com/ionic-3-4-how-to-change-css-custom-properties-of-ui-components/#ionic4ImageBackroundOnPage
+  // --background: linear-gradient(rgba(0,0,0, .5), rgba(0,0,0,.5)),url("./app/images/ChurchHomeKompallyCenterPortrait.jpg");
+  // --background: linear-gradient(rgba(0,0,0, .5), rgba(0,0,0,.5)),url("./app/images/pirple-bg-land.jpg");
+  --background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./assets/images/crossWithYellowFlowers.jpeg");
+  --background-repeat: no-repeat;
+  background-size: cover;
+  // opacity: 0.9;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  font-family: "Roboto", "Raleway", "Quicksand", "Spartan", "Nanum Gothic",
+    sans-serif;
+}
+// ion-header {
+//     max-width: 600px;
+//     margin: 0 auto;  /* Centers the header */
+//   }
+
+//   ion-footer {
+//     max-width: 600px;
+//     margin: 0 auto;  /* Centers the footer */
+//   }
+
+.mat-drawer-container {
+  height: 100% !important;
+  display: auto !important;
+}
+
+.titleIonSetting1 {
+  position: relative;
+  text-align: center;
+  --background: black;
+  font-family: "Raleway", "Quicksand", "Spartan", "Nanum Gothic", sans-serif;
+}
+
+.mat-fab.mat-accent,
+.mat-flat-button.mat-accent,
+.mat-mini-fab.mat-accent,
+.mat-raised-button.mat-accent {
+  // background-color: #eab927c4;// #eab927;
+  background-color: #f9f9f9c4; // #eab927;
+  color: black;
+}
+
+.mat-grid-tile-content {
+  justify-content: left !important;
+}
+
+.titleIonSetting1 ion-title {
+  font-weight: bolder;
+  color: #fff;
+}
+
+.custom-container {
+  padding: 8px 8px;
+  background: #000;
+}
+.text-center {
+  text-align: center;
+}
+.m-0 {
+  margin: 0px;
+}
+
+.back-btn {
+  color: whitesmoke;
+}

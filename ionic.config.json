@@ -1,0 +1,7 @@
+{
+  "name": "TDAG",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

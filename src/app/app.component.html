@@ -1,0 +1,23 @@
+<app-splash *ngIf="showSplash"></app-splash>
+<app-main *ngIf="!showSplash"></app-main>
+
+<mat-sidenav-container >
+  <!-- <mat-sidenav [opened]="openSidenav"> -->
+  <mat-sidenav #sidenav role="navigation" class="bgImage layer">
+      <app-sidenav-list (closeSidenav)="sidenav.close()"></app-sidenav-list>
+      <!-- <router-outlet></router-outlet> -->
+
+
+  </mat-sidenav>
+  <mat-sidenav-content class="bgImageFull" >
+      <app-header *ngIf="thePrestart.isLatest" (sidenavToggle)="sidenav.toggle()"></app-header>
+      <main>
+          <!-- <router-outlet></router-outlet> -->
+          <app-alert></app-alert>
+          <ion-router-outlet></ion-router-outlet>
+      </main>
+      <app-footer *ngIf="thePrestart.isLatest"></app-footer>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

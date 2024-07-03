@@ -1,0 +1,207 @@
+<ion-header>
+  <ion-toolbar class="titleIonSetting1">
+    <ion-buttons slot="end">
+      <ion-back-button class="back-btn"></ion-back-button>
+    </ion-buttons>
+    <ion-title> My Church Giving</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [forceOverscroll]="true" scrollY="true">
+  <div class="custom-container">
+    <form
+      class="mat-form-container"
+      style="margin-bottom: 50px"
+      [formGroup]="churchForm"
+      (ngSubmit)="onFormSubmit()"
+    >
+      <mat-card class="card1">
+        <div class="parent">
+          <!-- Church Name -->
+          <div>
+            <mat-form-field>
+              <mat-label>Church Name</mat-label>
+              <input
+                required
+                matInput
+                [formControl]="selectedChurchObj"
+                style="font-size: small; color: rgb(214, 47, 47)"
+                type="text"
+                aria-label="Church"
+                [matAutocomplete]="auto"
+              />
+              <!-- <mat-placeholder style="color:rgb(218, 32, 32);">Church Name</mat-placeholder> -->
+
+              <mat-autocomplete
+                #auto="matAutocomplete"
+                [displayWith]="displayChFn"
+              >
+                <mat-option
+                  *ngFor="let church of filteredOptions | async"
+                  [value]="church"
+                >
+                  {{ church.churchName }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+
+          <!-- Amount -->
+          <mat-form-field>
+            <input
+              matInput
+              required
+              formControlName="amt"
+              placeholder="Amount*"
+              type="number"
+            />
+          </mat-form-field>
+
+          <!-- Payment method. -->
+          <mat-form-field>
+            <mat-label>Payment Method</mat-label>
+            <select matNativeControl formControlName="payMode">
+              <option *ngFor="let pay of PayModeList" value="{{ pay.name }}">
+                {{ pay.name }}
+              </option>
+            </select>
+          </mat-form-field>
+
+          <!-- Contribution Status -->
+          <!-- <mat-form-field>
+            <mat-label>Contribution Status</mat-label>
+            <select matNativeControl formControlName="inStatus">
+              <option
+                *ngFor="let incomeStatus of ContributionStatusList"
+                value="{{ incomeStatus.name }}"
+              >
+                {{ incomeStatus.name }}
+              </option>
+            </select>
+          </mat-form-field> -->
+
+          <!-- Financial Type -->
+          <mat-form-field>
+            <mat-label>Financial Type</mat-label>
+            <select matNativeControl formControlName="finType">
+              <option
+                *ngFor="let fType of FinTypeList"
+                value="{{ fType.name }}"
+              >
+                {{ fType.name }}
+              </option>
+            </select>
+          </mat-form-field>
+
+          <!-- Date Received -->
+          <mat-form-field>
+            <input
+              matInput
+              [min]="minDate"
+              [max]="maxDate"
+              required
+              formControlName="recDate"
+              [matDatepicker]="myDatepicker"
+              placeholder="Received Date (Required)"
+              readonly
+            />
+            <mat-datepicker-toggle
+              [for]="myDatepicker"
+              matSuffix
+            ></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="checkNo"
+              placeholder="Cheque Number"
+              type="text"
+            />
+          </mat-form-field>
+
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="transNo"
+              placeholder="Transaction ID"
+              type="text"
+            />
+          </mat-form-field>
+
+          <!-- <mat-form-field>
+                    <input matInput required formControlName="firstName" placeholder="FirstName" type="text">
+                </mat-form-field> -->
+
+          <!-- <mat-form-field>
+                    <input matInput formControlName="lastName" placeholder="LastName" type="text">
+                </mat-form-field> -->
+
+          <!-- <mat-form-field>
+                    <input matInput formControlName="email" placeholder="Email" type="email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([\.]{1}[a-zA-Z]{2,}|[\.]{1}[a-zA-Z]{2,}[\.]{1}[a-zA-Z]{2,})">
+                </mat-form-field> -->
+
+          <!-- <mat-form-field>
+                    <input matInput required formControlName="phone" placeholder="Mobile" type="mobile" maxlength="10" pattern="[1-9]{1}[0-9]{9}" (keypress)="keyMPress($event)">   
+                </mat-form-field> -->
+
+          <!-- <mat-form-field>
+                    <mat-label>Gender</mat-label>
+                    <select matNativeControl formControlName="gender">
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                    </select>
+                </mat-form-field> -->
+
+          <!-- <mat-form-field>
+                  <input matInput [min]="startDate" [max]="endDate" required formControlName="DOB" [matDatepicker]="myDatepicker" placeholder="Birth Date (Required)" readonly>
+                    <input matInput required formControlName="DOB" [matDatepicker]="myDatepicker" placeholder="Birth Date (Required)" readonly>
+                    <mat-datepicker-toggle [for]="myDatepicker" matSuffix></mat-datepicker-toggle>
+                    <mat-datepicker #myDatepicker></mat-datepicker>
+                </mat-form-field>
+                 -->
+
+          <div *ngIf="error.isError" class="alert alert-danger">
+            {{ error.errorMessage }}
+          </div>
+
+          <!-- <div fxLayout="row" fxLayoutAlign="space-evenly">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!pastorForm.valid">Submit</button>
+                      <a [routerLink] = "['/membership-card']">
+                        <button style="margin-left: 50px;" color="warn" mat-raised-button (click)="onCancel()">Cancel</button>
+                      </a>
+                </div> -->
+
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-evenly"
+            class="text-center"
+            style="margin-top: 10px; margin-bottom: 10px"
+          >
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="!churchForm.valid"
+            >
+              Submit
+            </button>
+
+            <a [routerLink]="['/membershp-card']">
+              <button
+                style="margin-left: 50px"
+                color="warn"
+                mat-raised-button
+                (click)="onCancel()"
+              >
+                Cancel
+              </button>
+            </a>
+          </div>
+        </div>
+      </mat-card>
+    </form>
+  </div>
+  <!-- <div style="padding-bottom:80%; background-color: black;"></div> -->
+</ion-content>

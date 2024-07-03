@@ -1,0 +1,67 @@
+<ion-header>
+  <div>
+    <!-- <ion-img style="height:56px" src='../../assets/images/covidTelanganaHeader.png'></ion-img> -->
+    <ion-img
+      style="
+        margin-top: 22px;
+        height: 50px !important;
+        font: bold;
+        background: rgb(230, 228, 228) !important;
+        z-index: 10;
+      "
+      src="../../../assets/images/APAG-logo.png"
+    ></ion-img>
+  </div>
+
+  <!-- <ion-toolbar class="titleIonSetting1"> -->
+
+  <!-- <ion-title class="text-ionicBlue">TDAG</ion-title> -->
+  <!-- </ion-toolbar> -->
+</ion-header>
+<ion-content>
+  <div class="custom-container">
+    <div class="userBanner">
+      <div class="profileInfo" style="color: rgb(252, 250, 250)">
+        <!-- <h6 class="text-center m-0">Telugu District of South India Assemblies of God</h6> -->
+        <canvas
+          id="myChart"
+          style="
+            margin-top: 10px;
+            border: 2px solid rgb(68, 65, 65);
+            border-radius: 2%;
+          "
+        ></canvas>
+      </div>
+    </div>
+    <div style="margin-bottom: 60px; padding-top: 7px">
+      <mat-grid-list
+        cols="2"
+        rowHeight="150px"
+        gutterSize="5px"
+        class="gridClass"
+      >
+        <mat-grid-tile
+          class="tileStyle default-centered"
+          *ngFor="let tile of tiles"
+          [colspan]="tile.cols"
+          [rowspan]="tile.rows"
+          [style.color]="tile.color"
+          [style.background-color]="tile.bgColor"
+        >
+          <a
+            style="color: #dae7ed"
+            class="routeClass"
+            routerLink="{{ tile.routerLink }}"
+          >
+            <img
+              class="home-banner-images"
+              alt="img"
+              *ngIf="tile.image"
+              src="{{ tile.image }}"
+            />
+          </a>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+</ion-content>

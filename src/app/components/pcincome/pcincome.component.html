@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar class="titleIonSetting1">
+    <ion-buttons slot="end">
+      <ion-back-button
+        defaultHref="/home"
+        style="color: whitesmoke"
+        class="back-btn"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title style="display: flex; align-items: center">
+      Giving Forms
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-evenly"
+    class="custom-container"
+    style="height: 100%"
+  >
+    <mat-card
+      class="card1"
+      style="justify-content: center; align-items: center; padding: 0px"
+    >
+      <span class="parent" style="margin-bottom: 16px; margin: 10px">
+        <ion-button (click)="onFirstButtonClick()" style="margin-right: 20px"
+          >My Giving</ion-button
+        >
+        <ion-button (click)="onSecondButtonClick()"
+          >My Church Giving</ion-button
+        >
+      </span>
+    </mat-card>
+  </div>
+
+  <!-- <div fxLayout="row" fxLayoutAlign="space-evenly" class="text-center" style="margin-top: 10px; margin-bottom: 10px;">
+
+        
+    <a [routerLink]="['/income']">
+    <button style="margin-left: 50px;" color="warn" mat-raised-button
+        (click)="onFirstButtonClick()">Cancel</button>
+    </a>
+
+    <a [routerLink]="['/churchincome']">
+      <button style="margin-left: 50px;" color="warn" mat-raised-button
+          (click)=>Cancel</button>
+      </a>
+</div> -->
+</ion-content>

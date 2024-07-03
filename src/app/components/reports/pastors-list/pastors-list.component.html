@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar class="titleIonSetting1">
+      <ion-buttons slot="end">
+          <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Pastors List</ion-title>
+  </ion-toolbar>
+  <!-- <div id="#brandColor"></div> -->
+</ion-header>
+
+
+
+
+<ion-content [forceOverscroll]="true" id="brandColor">
+  <div class="custom-container" style="height: 100%;">
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+          <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pastors Report" refreshingSpinner="circles" refreshingText="Refreshing...">
+          </ion-refresher-content>
+      </ion-refresher>
+      <div style="padding: 10px;background-color:rgb(228, 228, 228); color:rgb(70, 58, 58)" fxLayout="row" color="secondary" fxLayoutAlign="space-between">
+          <!-- <a mat-flat-button routerLink="/carecell-home-page"> Back</a> -->
+      </div>
+
+      <mat-table [dataSource]="dataSource1" matSort multiTemplateDataRows>
+          <!-- <ng-container matColumnDef="SN">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> S.No.</mat-header-cell>
+              <mat-cell *matCellDef="let i=index;">
+                  {{(paginatorRef.pageIndex * paginatorRef.pageSize) + (i + 1) }}.
+              </mat-cell>
+          </ng-container> -->
+          
+          
+          
+
+          <ng-container matColumnDef="pastorname">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Pastor's Name / PhoneNo </mat-header-cell>
+              <mat-cell *matCellDef="let row" id="pastorName">{{row.displayName}}  {{row.PhoneNumber}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="phoneno">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>  </mat-header-cell>
+              <mat-cell *matCellDef="let row">  </mat-cell>
+          </ng-container>
+
+
+          <!-- <ng-container matColumnDef="gender">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> gender </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.status_id}} </mat-cell>
+    </ng-container> -->
+          <ng-container matColumnDef="desig">
+              <!-- <mat-header-cell *matHeaderCellDef mat-sort-header mat-raised-button matTooltip="Detailed list of Designations and their Abbreviations"> Desig  <mat-icon svgIcon="information"   (click)="getUniqueDesignations()"></mat-icon> </mat-header-cell> -->
+              <mat-header-cell style="padding-left:20px"  *matHeaderCellDef mat-sort-header mat-raised-button matTooltip="Detailed list of Designations and their Abbreviations"> Designation  <mat-icon svgIcon=""></mat-icon> </mat-header-cell>
+              <!-- {{getFirstLetters(row.Designation)}}  -->
+              <!-- matTooltip={{row.Designation}} matTooltipPosition="above" matTooltipShowDelay="500" --> 
+              <!-- <button mat-raised-button color="#brandColor" (click)="displayToolTip(row.Designation)" ><mat-icon svgIcon={{getIconType(row.Designation)}}></mat-icon>{{getFirstLetters(row.Designation)}}</button> -->
+              <!-- <button mat-button (click)="openSnackBar(message.value, action.value)">Show snack-bar</button> -->
+              <!-- <mat-cell *matCellDef="let row" id="designation"><button mat-raised-button color="#brandColor" (click)="openDialog(row.Designation)"><mat-icon svgIcon={{getIconType(row.Designation)}}></mat-icon>{{getFirstLetters(row.Designation)}}</button>
+              </mat-cell> -->
+              <mat-cell   *matCellDef="let row" id="designation"><ion-button style="padding-left:30px" mat-raised-button  (click)="openDialog(row.Designation)">{{getFirstLetters(row.Designation)}}</ion-button>
+                  </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+
+
+
+
+
+      <mat-paginator #paginatorRef [length]="length" style="padding:5px" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" [showFirstLastButtons]="true">
+      </mat-paginator>
+      <div style="margin-bottom:50px"></div>
+  </div>
+  
+</ion-content>
+

@@ -1,0 +1,23 @@
+.splash-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff; /* Set your background color */
+  }
+  
+  .logo {
+    width: 200px; /* Set the width of your logo */
+    height: auto;
+    animation: fadeIn 2s;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  

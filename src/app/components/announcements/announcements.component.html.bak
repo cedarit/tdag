@@ -1,0 +1,69 @@
+<app-splash *ngIf="showSplash"></app-splash>
+<app-main *ngIf="!showSplash"></app-main>
+
+<ion-header class="titleIonSetting1">
+  <div>
+    <!-- <ion-img style="height:56px" src='../../assets/images/covidTelanganaHeader.png'></ion-img> -->
+    <ion-img
+      style="
+        height: 50px !important;
+        font: bold;
+        background: rgb(230, 228, 228) !important;
+      "
+      src="../../../assets/images/APAG-logo.png"
+    ></ion-img>
+  </div>
+
+  <!-- <ion-toolbar *ngIf="!isLoggedIn" class="titleIonSetting1"> -->
+
+  <!-- <ion-toolbar class="titleIonSetting1">
+    
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      TDAG
+    </ion-title>
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content fullscreen padding scroll-y="false" [forceOverscroll]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Getting new updates"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <!-- Spiner -->
+  <section
+    fxLayout="column"
+    fxLayoutAlign="center"
+    *ngIf="gotResponse === false"
+  >
+    <mat-progress-spinner
+      class="example-margin"
+      [color]="color"
+      [mode]="mode"
+      [value]="value"
+    >
+    </mat-progress-spinner>
+  </section>
+  <swiper-container
+    #swiper
+    effect="flip"
+    [pagination]="true"
+    [loop]="true"
+    [autoplay]="true"
+  >
+    <swiper-slide
+      *ngFor="let slide of slides"
+      data-swiper-autoplay="5000"
+      swiperSlide
+    >
+      <img src="{{ slide.FilePath }}" alt="img" class="slide-img" />
+    </swiper-slide>
+  </swiper-container>
+</ion-content>

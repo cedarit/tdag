@@ -1,0 +1,186 @@
+<div class="menuImageHeader">
+  <!-- <ion-img
+    style="height: 50px; background-color: rgb(228, 227, 227)"
+    src="../../../assets/images/APAG-logo.png"
+  ></ion-img> -->
+  <!-- <div style="margin-top: 0px">""</div> -->
+</div>
+
+<mat-nav-list>
+  <mat-divider *ngIf="isMenuItemVisible('/home')"></mat-divider>
+  <a
+    mat-list-item
+    routerLink="/home"
+    *ngIf="canDisplay()"
+    (click)="onClose()"
+    class="top-item nItem"
+  >
+    <mat-icon>home</mat-icon> <span class="nav-caption">Home</span>
+  </a>
+  <mat-divider *ngIf="canDisplay()"></mat-divider>
+
+  <mat-divider></mat-divider>
+  <a
+    mat-list-item
+    routerLink="/membership-card"
+    *ngIf="canDisplayL()"
+    (click)="onClose()"
+    class="nItem"
+  >
+    <mat-icon>card_membership</mat-icon>
+    <span class="nav-caption">Membership Card</span>
+  </a>
+  <mat-divider></mat-divider>
+
+  <!-- <mat-divider></mat-divider> 
+    <a mat-list-item routerLink="/profile"   (click)="onClose() " class="nItem">
+      <mat-icon>account_circle</mat-icon> <span class="nav-caption"> User Profile</span>            
+    </a>
+    <mat-divider></mat-divider> -->
+
+  <mat-divider *ngIf="canDisplay()"></mat-divider>
+
+  <!-- New Pastors Form -->
+  <!-- <a
+    mat-list-item
+    routerLink="/church-pastor-form"
+    *ngIf="canDisplay()"
+    (click)="onClose()"
+    class="nItem"
+  >
+    <mat-icon>wysiwyg</mat-icon>
+    <span class="nav-caption">New Pastors Form</span>
+  </a>
+  <mat-divider *ngIf="canDisplay()"></mat-divider> -->
+
+  <mat-divider *ngIf="!isMenuItemVisible('/income')"></mat-divider>
+  <a
+    mat-list-item
+    routerLink="/pcincome"
+    *ngIf="canDisplayL()"
+    (click)="onClose()"
+    class="nItem"
+  >
+    <mat-icon>volunteer_activism</mat-icon>
+    <span class="nav-caption">My Giving Form</span>
+  </a>
+  <mat-divider *ngIf="!isMenuItemVisible('/income')"></mat-divider>
+
+  <!-- Expenses Form -->
+  <!-- <a
+    mat-list-item
+    routerLink="/expenses"
+    *ngIf="canDisplay()"
+    (click)="onClose()"
+    class="nItem"
+  >
+    <mat-icon>currency_rupee</mat-icon>
+    <span class="nav-caption">Expenses Form</span>
+  </a>
+  <mat-divider *ngIf="canDisplay()"></mat-divider> -->
+
+  <!--  Pastors List 
+  <mat-divider *ngIf="canDisplay()"></mat-divider>
+  <a
+    mat-list-item
+    routerLink="/pastors-list"
+    *ngIf="canDisplay()"
+    (click)="onClose()"
+    class="nItem"
+  >
+    <mat-icon>list_alt</mat-icon> <span class="nav-caption"> Pastors List</span>
+  </a>
+  <mat-divider *ngIf="canDisplay()"></mat-divider> -->
+
+  <!-- <mat-divider *ngIf="canDisplay()"></mat-divider>
+  <a
+    mat-list-item
+    routerLink="/income-report"
+    *ngIf="canDisplay()"
+    (click)="onClose()"
+    class="nItem"
+  >
+    <mat-icon>report</mat-icon> <span class="nav-caption">Income Report</span>
+  </a>
+  <mat-divider *ngIf="canDisplay()"></mat-divider> -->
+
+  <!-- <mat-divider></mat-divider>
+    <a mat-list-item routerLink="/login"  (click)="onClose() " class="nItem">
+      <mat-icon>account_circle</mat-icon> <span class="nav-caption">Login</span>            
+    </a>  
+    <mat-divider></mat-divider> -->
+
+  <!-- <mat-divider></mat-divider>
+    <a mat-list-item routerLink="/pastoreport"  (click)="onClose() " class="nItem">
+      <mat-icon>format_list_numbered</mat-icon> <span class="nav-caption">Account Report</span>            
+    </a>  
+    <mat-divider></mat-divider> -->
+
+  <!-- [ngClass]="{ hidden: isMenuItemVisible('/expense-reports') }" -->
+  <a
+    mat-list-item
+    routerLink="/expense-reports"
+    *ngIf="canDisplay()"
+    (click)="onClose()"
+    class="nItem"
+  >
+    <mat-icon>account_balance</mat-icon>
+    <span class="nav-caption">My Givings Report</span>
+  </a>
+  <mat-divider
+    [ngClass]="{ hidden: !isMenuItemVisible('/expense-reports') }"
+  ></mat-divider>
+
+  <mat-divider></mat-divider>
+  <a mat-list-item routerLink="/calendar" (click)="onClose()" class="nItem">
+    <!-- <mat-icon>calendar_today</mat-icon> -->
+    <img
+      src="/assets/images/WhiteIcon-Upcoming.png"
+      alt="Calendar"
+      width="22px"
+    />
+    <span class="nav-caption">Calendar</span>
+  </a>
+  <mat-divider></mat-divider>
+
+  <mat-divider></mat-divider>
+  <a
+    mat-list-item
+    routerLink="/announcements"
+    (click)="onClose()"
+    class="nItem"
+  >
+    <mat-icon>update</mat-icon>
+    <span class="nav-caption">Updates</span>
+  </a>
+  <mat-divider></mat-divider>
+
+  <mat-divider></mat-divider>
+  <a mat-list-item routerLink="/contact-us" (click)="onClose()" class="nItem">
+    <mat-icon>contacts</mat-icon>
+    <span class="nav-caption">Contact Us</span>
+  </a>
+  <mat-divider></mat-divider>
+
+  <!-- Login / Logout-->
+  <div *ngIf="!isLoggedIn">
+    <a mat-list-item routerLink="/login" (click)="onClose()" class="nItem">
+      <mat-icon>input</mat-icon> <span class="nav-caption">Login</span>
+    </a>
+  </div>
+  <!-- Logout -->
+  <div *ngIf="isLoggedIn">
+    <a
+      mat-list-item
+      *ngIf="isLoggedIn"
+      (click)="closeAndLogout()"
+      class="nItem"
+    >
+      <mat-icon>output</mat-icon> <span class="nav-caption">Logout</span>
+    </a>
+  </div>
+  <div class="versionInfo">
+    iOS Version: {{ theAppVersion.iOS }}
+    <!-- Android Version: {{theAppVersion.android}} -->
+  </div>
+</mat-nav-list>

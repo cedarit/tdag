@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar class="titleIonSetting1">
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Verify and Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form
+    style="margin-bottom: 50px"
+    [formGroup]="verifyloginform"
+    (ngSubmit)="onFormSubmit()"
+  >
+    <mat-card class="cardForm" fxLayout="column" fxLayoutAlign="center">
+      <mat-form-field>
+        <mat-label>OTP</mat-label>
+        <input
+          matInput
+          required
+          formControlName="otp"
+          placeholder="OTP"
+          type="text"
+          maxlength="6"
+          pattern="[1-9]{1}[0-9]{5}"
+        />
+        <mat-error *ngIf="!verifyloginform.get('otp').valid"
+          >Please enter 6 Digits</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input
+          matInput
+          placeholder="First Name"
+          formControlName="fname"
+          required
+          type="text"
+          maxlength="20"
+        />
+        <mat-error *ngIf="!verifyloginform.get('fname').valid"
+          >Please enter First Name</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Last Name"
+          formControlName="lname"
+          required
+          maxlength="20"
+        />
+        <mat-error *ngIf="!verifyloginform.get('lname').valid"
+          >Please enter Last Name</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          matInput
+          placeholder="Password"
+          formControlName="pwd"
+          required
+          minlength="5"
+          maxlength="20"
+        />
+        <mat-error *ngIf="!verifyloginform.get('pwd').valid"
+          >Please enter password</mat-error
+        >
+      </mat-form-field>
+
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="!verifyloginform.valid"
+      >
+        Submit
+      </button>
+    </mat-card>
+  </form>
+</ion-content>
