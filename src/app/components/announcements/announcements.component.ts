@@ -21,7 +21,8 @@ export class AnnouncementsComponent implements OnInit {
   gotResponse = false;
   // isLoggedIn='true';
   // slidesUrl = 'https://app.newlifeag.in/app/appBannerList';
-  slidesUrl = 'http://app.newlifeag.in/app/appBannerList';
+  // slidesUrl = 'http://app.newlifeag.in/app/appBannerList';//https://apag.digitalchurch.tech/app/appBannerList
+  slidesUrl = 'https://apag.digitalchurch.tech/app/appBannerList';
   @ViewChild('swiper')  swiperRef: ElementRef | undefined;
 
   constructor(private httpClient: HttpClient) {
