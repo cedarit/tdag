@@ -2,3 +2,6 @@ node_modules/
 *.zip
 __MACOSX/
 .angular/
+.DS_Store
+src/.DS_Store
+src/app/.DS_Store

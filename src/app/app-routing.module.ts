@@ -22,6 +22,8 @@ import { SignupComponent } from './components/auth/signup/signup.component';
 import { SetnewpasswordComponent } from './components/auth/setnewpassword/setnewpassword.component';
 import { ForgotpasswordComponent } from './components/auth/forgotpassword/forgotpassword.component';
 import { VerifyandloginComponent } from './components/auth/verifyandlogin/verifyandlogin.component';
+import { WhatsAppSupportComponent } from './components/whatsapp-support/whatsapp-support.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'announcements', pathMatch: 'full' },
@@ -45,6 +47,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
+  { path: 'whatsapp-support/:phoneNumber', component: WhatsAppSupportComponent },
   { path: 'setnewpassword', component: SetnewpasswordComponent },
   { path: 'verifyandlogin', component: VerifyandloginComponent },
   { path: 'pastors-list', component: PastorsListComponent },

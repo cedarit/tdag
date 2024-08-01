@@ -50,6 +50,7 @@ import { SignupComponent } from './components/auth/signup/signup.component';
 import { SetnewpasswordComponent } from './components/auth/setnewpassword/setnewpassword.component';
 import { ForgotpasswordComponent } from './components/auth/forgotpassword/forgotpassword.component';
 import { VerifyandloginComponent } from './components/auth/verifyandlogin/verifyandlogin.component';
+import { WhatsAppSupportComponent } from './components/whatsapp-support/whatsapp-support.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,8 @@ import { VerifyandloginComponent } from './components/auth/verifyandlogin/verify
     ForgotpasswordComponent,
     SetnewpasswordComponent,
     VerifyandloginComponent,
+    WhatsAppSupportComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -119,7 +119,7 @@
   <!-- [ngClass]="{ hidden: isMenuItemVisible('/expense-reports') }" -->
   <a
     mat-list-item
-    routerLink="/expense-reports"
+    routerLink="/pastoreport"
     *ngIf="canDisplay()"
     (click)="onClose()"
     class="nItem"
@@ -128,7 +128,7 @@
     <span class="nav-caption">My Givings Report</span>
   </a>
   <mat-divider
-    [ngClass]="{ hidden: !isMenuItemVisible('/expense-reports') }"
+    [ngClass]="{ hidden: !isMenuItemVisible('/pastoreport') }"
   ></mat-divider>
 
   <mat-divider></mat-divider>

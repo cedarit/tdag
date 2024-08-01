@@ -51,6 +51,7 @@ export class IncomeComponent implements OnInit {
   donors: Donor[];
   contactObj: Contact[];
   mName: string;
+  psDisplayName: string
   myId: any;
   contactID: string;
 
@@ -86,12 +87,27 @@ export class IncomeComponent implements OnInit {
   ngOnInit() {
     const storedData = localStorage.getItem('aminUserInfo');
     const pData = storedData ? JSON.parse(storedData) : null;
+
+
+    // localStorage psReport
+    const pStoredData = localStorage.getItem("psReport");
+    const psData = pStoredData ? JSON.parse(pStoredData) : null;
+
+
     const myName = pData.user.name;
     this.myId = pData.user.uid;
 
     console.log('Logged in User Id:', this.myId);
+    // this is username
     if (pData && pData.user) {
       this.mName = pData.user.name;
+    }
+
+    // this is DisplayName
+    if (psData && psData.length > 0 && psData[0].displayName) {
+      this.psDisplayName = psData[0].displayName;
+    } else {
+      this.psDisplayName = null;
     }
 
     this.incomeForm = new FormGroup({

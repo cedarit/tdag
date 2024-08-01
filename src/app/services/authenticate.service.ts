@@ -107,6 +107,10 @@ export class AuthenticateService {
 
   async doAminLogout() {
     console.log("logout called");
+    //Delete localStorage
+    localStorage.removeItem("psReport");
+    localStorage.removeItem("aminUserInfo");
+    localStorage.removeItem("latestReleaseInfo");
     //Go to Login Page.
     await this.router.navigate(["/login"]);
 

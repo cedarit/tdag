@@ -57,6 +57,16 @@ export class ForgotpasswordComponent implements OnInit {
     });
   }
 
+  onFormSubmitWhatsApp() {
+    if (this.forgotpwdform.valid) {
+      const phoneNumber = this.forgotpwdform.get('phoneno').value;
+      this.router.navigate(['/whatsapp-support', phoneNumber]);
+    } else {
+      this.gotError = true;
+      this.failMessage = 'Please enter a valid 10-digit phone number.';
+    }
+  }
+
   undefinedToEmpty($theStr: any) {
     if ($theStr) {
       return $theStr;

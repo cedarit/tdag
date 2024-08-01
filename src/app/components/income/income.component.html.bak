@@ -115,7 +115,7 @@
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Payment Mothod</mat-label>
+            <mat-label>Payment Method</mat-label>
             <select matNativeControl formControlName="payMode">
               <option *ngFor="let pay of PayModeList" value="{{ pay.name }}">
                 {{ pay.name }}
