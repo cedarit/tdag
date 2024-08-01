@@ -19,13 +19,11 @@ export class ContactUsComponent implements OnInit {
   emailids?: string;
 
   contactInfo = {
-    name: ' TDAG',
+    name: ' TDSIAG',
     address: ' Telangana, INDIA',
-    mobile1: 9849721295,
-    mobile2: 9849187697,
-    mobile3: 8897922108,
-    email: ' principal.apbc@gmail.com',
-    website: ' apbiblecollege.com',
+    mobile: 9849721295,
+    email: ' superintendent@tdsiag.org',
+    website: ' app.tdsiag.org',
   };
 
   constructor() {}

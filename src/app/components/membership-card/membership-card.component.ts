@@ -96,8 +96,13 @@ export class MembershipCardComponent  implements OnInit {
   getPastorReport() {
     this.http.get(this.pastorReportUrl).subscribe((res: any) => {
       this.resStringReprot = JSON.stringify(res);
+      localStorage.setItem("psReport", this.resStringReprot);
+
       this.resReport = JSON.parse(this.gen.getDecodedString(this.resStringReprot));
       this.pastorReportData = this.resReport;
+          console.log(
+            localStorage.getItem("pastorReportData")
+          );
       this.uData = this.pastorReportData;
       this.jsonArray = this.uData;
       this.url = this.resReport[0].URL;
