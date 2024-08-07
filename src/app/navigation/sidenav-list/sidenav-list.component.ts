@@ -29,6 +29,13 @@ export class SidenavListComponent implements OnInit {
     this.isUserLoggedIn();
   }
 
+  updateLoginStatus(status: boolean) {
+    this.isLoggedIn = status;
+    // You might want to update other related variables here as well
+    this.isLogin = status;
+    // If you need to perform any other actions when login status changes, do them here
+  }
+
   ngOnInit() {
     const storedData = localStorage.getItem('aminUserInfo');
     const pData = storedData ? JSON.parse(storedData) : null;
@@ -60,6 +67,16 @@ export class SidenavListComponent implements OnInit {
       width: '150px',
       height: '90px',
     });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   console.log('The dialog was closed');
+    // });
+    dialogRef.componentInstance.logoutConfirmed.subscribe(() => {
+      this.updateLoginStatus(false);
+    });
+    dialogRef.componentInstance.closeSidenav.subscribe(() => {
+      this.closeSidenav.emit();
+    });
+  
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });
@@ -122,7 +139,11 @@ export interface DialogData {
   templateUrl: 'logout-dialog.html',
 })
 export class LogoutDialog {
-  isLogin = 'false';
+  // isLogin = false;
+  @Output() logoutConfirmed = new EventEmitter<void>();
+  @Output() closeSidenav = new EventEmitter<void>();
+
+
 
   constructor(
     public dialog: MatDialog,
@@ -131,7 +152,7 @@ export class LogoutDialog {
     private authenSer2: AuthenticateService,
     private router: Router
   ) {}
-  @Output() closeSidenav = new EventEmitter<void>();
+  // @Output() closeSidenav = new EventEmitter<void>();
 
   onNoClick(): void {
     this.closeSidenav.emit();
@@ -142,7 +163,8 @@ export class LogoutDialog {
     this.closeSidenav.emit();
     await this.authenSer2.doAminLogout();
     this.dialogRef.close();
-    this.isLogin = 'false';
+    // this.isLogin = false;
+    this.logoutConfirmed.emit();
     this.router.navigate(['/login']);
   }
 }
