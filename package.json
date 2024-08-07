@@ -37,7 +37,8 @@
     "chart.js": "^4.3.0",
     "ionicons": "^7.0.0",
     "ngx-device-detector": "^6.0.1",
-    "rxjs": "~7.8.0",
+    "ngx-image-cropper": "^8.0.0",
+    "rxjs": "^6.6.7",
     "swiper": "^11.0.5",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

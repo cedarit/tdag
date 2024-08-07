@@ -1,0 +1,43 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <h1 class="centered-title">Profile</h1>
+  </div>
+  
+  <div class="profile-content">
+    <div class="profile-photo">
+      <img [src]="photoUrl || '/assets/images/placeholder-profile.png'" alt="Profile Photo">
+      <button class="update-photo-btn" (click)="triggerFileInput()">
+        <i class="fas fa-camera"></i>
+      </button>
+      <input #fileInput type="file" (change)="onPhotoChange($event)" accept="image/*" style="display: none;">
+    </div>
+    
+    <div class="profile-field">
+      <label>Display Name:</label>
+      <input [(ngModel)]="displayName" [disabled]="!isEditing">
+    </div>
+    
+    <div class="profile-field">
+      <label>Phone Number:</label>
+      <input [(ngModel)]="phoneNumber" [disabled]="!isEditing">
+    </div>
+    
+    <div class="profile-field">
+      <label>Email:</label>
+      <input [(ngModel)]="email" [disabled]="!isEditing">
+    </div>
+    
+    <div class="button-container">
+      <button class="save-btn" (click)="toggleEdit()">
+        {{ isEditing ? 'Save' : 'Edit' }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<nav class="bottom-nav">
+  <a href="#"><i class="icon-membership-card"></i>Membership Card</a>
+  <a href="#"><i class="icon-calendar"></i>Calendar</a>
+  <a href="#"><i class="icon-updates"></i>Updates</a>
+  <a href="#"><i class="icon-contact-us"></i>Contact Us</a>
+</nav>

@@ -51,7 +51,10 @@ import { SetnewpasswordComponent } from './components/auth/setnewpassword/setnew
 import { ForgotpasswordComponent } from './components/auth/forgotpassword/forgotpassword.component';
 import { VerifyandloginComponent } from './components/auth/verifyandlogin/verifyandlogin.component';
 import { WhatsAppSupportComponent } from './components/whatsapp-support/whatsapp-support.component';
+// import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { MyProfileComponent, ConfirmDialogComponent } from './components/my-profile/my-profile.component';
 
+// import { ImageCropperModule } from 'ngx-image-cropper';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +86,8 @@ import { WhatsAppSupportComponent } from './components/whatsapp-support/whatsapp
     SetnewpasswordComponent,
     VerifyandloginComponent,
     WhatsAppSupportComponent,
-    
+    MyProfileComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,6 +108,7 @@ import { WhatsAppSupportComponent } from './components/whatsapp-support/whatsapp
     MatButtonModule,
     MaterialModule,
     RouterModule,
+    // ImageCropperModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
