@@ -54,7 +54,7 @@ const routes: Routes = [
   { path: 'pastors-list', component: PastorsListComponent },
   { path: 'income-report', component: IncomeReportComponent },
   { path: 'expense-reports', component: ExpenseReportsComponent },
-  // { path: 'membership-card', component: MembershipCardComponent },
+  { path: 'membership-card', component: MembershipCardComponent },
   { path: 'my-profile', component: MyProfileComponent },
   
   {

@@ -85,9 +85,11 @@ export class AuthenticateService {
           );
         }
       );
+  
     }
   }
-
+  
+  
   getSessionToken() {
     return this.http.get(this.$baseURL + this.sessionTokenEndpoint, {
       responseType: "text",
@@ -110,6 +112,7 @@ export class AuthenticateService {
     //Delete localStorage
     localStorage.removeItem("psReport");
     localStorage.removeItem("aminUserInfo");
+    localStorage.removeItem("userProfileInfo");
     localStorage.removeItem("latestReleaseInfo");
     //Go to Login Page.
     await this.router.navigate(["/login"]);
@@ -144,7 +147,7 @@ export class AuthenticateService {
 
   public getUserID() {
     if (localStorage.getItem("aminUserInfo") != null) {
-      // this.theUid = JSON.parse(localStorage.getItem("aminUserInfo")).user.uid;
+       this.theUid = JSON.parse(localStorage.getItem("aminUserInfo")).user.uid;
       return this.theUid;
     } else {
       return -1;
