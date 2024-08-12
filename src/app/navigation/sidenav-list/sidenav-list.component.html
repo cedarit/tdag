@@ -31,7 +31,17 @@
     <span class="nav-caption">Membership Card</span>
   </a>
   <mat-divider></mat-divider>
-
+  <a
+  mat-list-item
+  routerLink="/my-profile"
+  *ngIf="canDisplayL()"
+  (click)="onClose()"
+  class="nItem"
+>
+  <mat-icon>card_membership</mat-icon>
+  <span class="nav-caption">Update Profile</span>
+</a>
+  
   <!-- <mat-divider></mat-divider> 
     <a mat-list-item routerLink="/profile"   (click)="onClose() " class="nItem">
       <mat-icon>account_circle</mat-icon> <span class="nav-caption"> User Profile</span>            

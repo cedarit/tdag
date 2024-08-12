@@ -23,17 +23,16 @@ export class MyProfileComponent implements OnInit {
     // Fetch user data here
   }
 
-  toggleEdit() {
-    this.isEditing = !this.isEditing;
-    if (!this.isEditing) {
-      this.saveChanges();
-    }
+  startEdit() {
+    this.isEditing = true;
   }
+
 
   saveChanges() {
     // Implement API call to save changes
     console.log('Saving changes:', this.displayName, this.phoneNumber, this.email, this.photoUrl);
     // Here you would typically make an API call to save the data
+    this.isEditing = false;
     this.showAlert('Profile updated successfully');
   }
 

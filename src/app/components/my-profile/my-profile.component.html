@@ -4,32 +4,34 @@
   </div>
   
   <div class="profile-content">
-    <div class="profile-photo">
-      <img [src]="photoUrl || '/assets/images/placeholder-profile.png'" alt="Profile Photo">
-      <button class="update-photo-btn" (click)="triggerFileInput()">
-        <i class="fas fa-camera"></i>
+    <div class="profile-photo-section">
+      <div class="profile-photo">
+        <img [src]="photoUrl || '/assets/images/placeholder-profile.png'" alt="Profile Photo">
+       <!-- commented out edit option for photo
+        <button class="update-photo-btn" (click)="triggerFileInput()">
+          <i class="fas fa-camera"></i>
+        </button>
+        -->
+        <!-- and commented out file input
+        <input #fileInput type="file" (change)="onPhotoChange($event)" accept="image/*" style="display: none;">
+        -->
+      </div>
+      <div class="display-name">
+        <span class="display-name-value">{{ displayName }}</span>
+      </div>
+    </div>
+    
+    <div class="editable-section">
+      <button *ngIf="!isEditing" class="edit-btn" (click)="toggleEdit()">
+        <i class="fas fa-edit"></i> Edit
       </button>
-      <input #fileInput type="file" (change)="onPhotoChange($event)" accept="image/*" style="display: none;">
-    </div>
-    
-    <div class="profile-field">
-      <label>Display Name:</label>
-      <input [(ngModel)]="displayName" [disabled]="!isEditing">
-    </div>
-    
-    <div class="profile-field">
-      <label>Phone Number:</label>
-      <input [(ngModel)]="phoneNumber" [disabled]="!isEditing">
-    </div>
-    
-    <div class="profile-field">
-      <label>Email:</label>
-      <input [(ngModel)]="email" [disabled]="!isEditing">
-    </div>
-    
-    <div class="button-container">
-      <button class="save-btn" (click)="toggleEdit()">
-        {{ isEditing ? 'Save' : 'Edit' }}
+      <div class="profile-field">
+        <label>Email:</label>
+        <input [(ngModel)]="email" [disabled]="!isEditing" (ngModelChange)="onInputChange()">
+      </div>
+      <!-- Phone number is hidden -->
+      <button *ngIf="isEditing" class="save-btn" (click)="toggleEdit()" [disabled]="!formChanged" [class.active]="formChanged">
+        Save
       </button>
     </div>
   </div>
