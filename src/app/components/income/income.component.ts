@@ -7,6 +7,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { GeneralService } from 'src/app/services/general.service';
+import envConfig from './../../env.json';
+
 
 export interface Donor {
   displayName: string;
@@ -54,6 +56,10 @@ export class IncomeComponent implements OnInit {
   psDisplayName: string
   myId: any;
   contactID: string;
+  memberProfile: any;
+  memberProfileUrl: string;
+
+  
 
   // selectedDonorObj = new FormControl(null, Validators.required);
   selectedDonorObj = new FormControl(null);
@@ -85,22 +91,25 @@ export class IncomeComponent implements OnInit {
   //http://192.168.1.44/trola/addIncome?amt=201&conId=52&recDate=23-05-2021&payMode=Cash&inStatus=Completed
 
   ngOnInit() {
+
+    this.setAndGetMemberProfile();
+
     const storedData = localStorage.getItem('aminUserInfo');
-    const pData = storedData ? JSON.parse(storedData) : null;
+    const mData = storedData ? JSON.parse(storedData) : null;
 
 
     // localStorage psReport
-    const pStoredData = localStorage.getItem("psReport");
-    const psData = pStoredData ? JSON.parse(pStoredData) : null;
+    const mStoredData = localStorage.getItem('memberProfile');
+    const psData = mStoredData ? JSON.parse(mStoredData) : null;
 
 
-    const myName = pData.user.name;
-    this.myId = pData.user.uid;
+    const myName = mData.user.name;
+    this.myId = mData.user.uid;
 
     console.log('Logged in User Id:', this.myId);
     // this is username
-    if (pData && pData.user) {
-      this.mName = pData.user.name;
+    if (mData && mData.user) {
+      this.mName = mData.user.name;
     }
 
     // this is DisplayName
@@ -108,6 +117,9 @@ export class IncomeComponent implements OnInit {
       this.psDisplayName = psData[0].displayName;
     } else {
       this.psDisplayName = null;
+      // this.gen.setMemberProfile();
+      // console.log("Found memberProfile was missing. Loaded it")
+      // this.psDisplayName = mData[0].displayName;
     }
 
     this.incomeForm = new FormGroup({
@@ -126,6 +138,42 @@ export class IncomeComponent implements OnInit {
     this.getdonorData();
     this.getContactID(this.myId);
   }
+
+  setAndGetMemberProfile() {
+  const storedData = localStorage.getItem('aminUserInfo');
+    let mData = storedData ? JSON.parse(storedData) : null;
+
+    // ToDo: check to handel if mData is null
+    this.memberProfileUrl = envConfig.memberDataURL + mData.user.uid;
+    this.http.get(this.memberProfileUrl).subscribe((res: any) => {
+      let resString = JSON.stringify(res);
+      localStorage.setItem("MemberProfile", resString);
+
+      let MemberProfileData = JSON.parse(this.gen.getDecodedString(resString));
+          console.log(
+            localStorage.getItem("MemberProfileData")
+          );
+
+    });
+  }
+  // setAndGetMemberProfile() {
+  //   // Call the service method
+  //   this.genServ.setMemberProfile().subscribe(
+  //     () => {
+  //       // Once the HTTP call is complete and localStorage is updated, read from localStorage
+  //       const storedProfile = localStorage.getItem('memberProfile');
+  //       if (storedProfile) {
+  //         this.memberProfile = JSON.parse(storedProfile);
+  //         console.log('Member profile:', this.memberProfile);
+  //       } else {
+  //         console.log('No member profile found in localStorage');
+  //       }
+  //     },
+  //     (      error: any) => {
+  //       console.error('Error setting member profile:', error);
+  //     }
+  //   );
+  // }
 
   capitalizeFirstLetter(value: string): string {
     return value.charAt(0).toUpperCase() + value.slice(1);

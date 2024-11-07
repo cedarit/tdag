@@ -42,6 +42,7 @@ export class ChurchincomeComponent implements OnInit {
   resStringConStatus: any;
   resStringFinType: any;
   FinTypeList: any;
+  psDisplayName: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -79,6 +80,34 @@ export class ChurchincomeComponent implements OnInit {
     });
 
     this.getChurchData();
+
+    const storedData = localStorage.getItem('aminUserInfo');
+    const mData = storedData ? JSON.parse(storedData) : null;
+
+
+    // localStorage psReport
+    const mStoredData = localStorage.getItem('memberProfile');
+    const psData = mStoredData ? JSON.parse(mStoredData) : null;
+
+
+    const myName = mData.user.name;
+  
+    console.log('Logged in User Id:', mData.user.uid);
+    // this is username
+    if (mData && mData.user) {
+     // this.mName = mData.user.name;
+    }
+
+
+        // this is DisplayName
+        if (psData && psData.length > 0 && psData[0].displayName) {
+          this.psDisplayName = psData[0].displayName;
+        } else {
+          this.psDisplayName = null;
+          // this.gen.setMemberProfile();
+          // console.log("Found memberProfile was missing. Loaded it")
+          // this.psDisplayName = mData[0].displayName;
+        }
   }
 
   // Mobile only 10 digit number allowed

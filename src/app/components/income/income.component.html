@@ -26,11 +26,7 @@
 
 <ion-content style="max-width: 600px !important">
   <div class="customContainer" style="height: 94vh">
-    <!-- <mat-card class="userCard">
-      <mat-label style="text-align: center"
-        >Rev. {{ capitalizeFirstLetter(mName) }}</mat-label
-      >
-    </mat-card> -->
+  
 
     <form
       class="mat-form-container"
@@ -53,64 +49,6 @@
             > 
             {{psDisplayName}}
           </mat-label>
-          <!-- Donor's Name -->
-          <!-- <mat-form-field>
-            <input
-             matInput
-              [formControl]="selectedDonorObj"
-              style="font-size: small; color: rgb(214, 47, 47)"
-              type="text"
-              aria-label="Donor"
-              [matAutocomplete]="auto"
-            />
-
-            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-              <mat-option
-                *ngFor="let donor of filteredOptions | async"
-                [value]="donor"
-              >
-                {{ donor.displayName }}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>  -->
-
-          <!-- Church Name -->
-          <!-- <div>
-                        <mat-form-field>  
-                          <mat-label>Church Name</mat-label>                      
-                          <input  
-                          required matInput [formControl] ="selectedDonorObj" 
-                          style='font-size: small;color:rgb(214, 47, 47)'
-                          type="text"
-                          aria-label="Church"
-                          [matAutocomplete]="auto">
-                          
-                          
-                          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayChFn">
-                              <mat-option *ngFor="let church of filteredOptions | async" [value]="church">
-                                   {{church.displayName}}
-                              </mat-option>
-                          </mat-autocomplete>
-                          
-                        </mat-form-field>
-                        </div> -->
-
-          <!-- <mat-form-field>  
-                        <mat-label>Church Name</mat-label>                      
-                        <input  
-                        required matInput [formControl] ="selectedChurchObj" 
-                        style='font-size: small;color:rgb(214, 47, 47)'
-                        type="text"
-                        aria-label="Church"
-                        [matAutocomplete]="auto">
-              
-                        
-                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayChFn">
-                            <mat-option *ngFor="let church of filteredOptions | async" [value]="church">
-                                 {{church.churchName}}
-                            </mat-option>
-                        </mat-autocomplete>
-                    </mat-form-field> -->
 
           <!-- Amount -->
           <mat-form-field>

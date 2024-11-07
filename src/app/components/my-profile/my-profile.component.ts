@@ -5,6 +5,8 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dial
 import { HttpClient } from '@angular/common/http'; 
 import { GeneralService } from 'src/app/services/general.service';
 
+
+
 export interface uDataIntf {
   dn: string;// display name?
   urrl: string;
@@ -34,10 +36,7 @@ export class MyProfileComponent implements OnInit {
   uiid: string;
   theUid!: any;
 
-  
-
-
-
+  public emailError: string | null = null;
 
   private initialState: any;
 
@@ -65,23 +64,42 @@ export class MyProfileComponent implements OnInit {
      photoUrl: this.photoUrl
     };
   }
-
-  toggleEdit() {
-    this.isEditing = !this.isEditing;
-    if (this.isEditing) {
-      this.saveInitialState();
-    } else if (this.formChanged) {
-      this.saveChanges();
-    }
-    this.formChanged = false;
+  public isValidEmail(email: string): boolean {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
   }
 
+ 
   onInputChange() {
     this.formChanged = 
       this.displayName !== this.initialState.displayName ||
       this.phoneNumber !== this.initialState.phoneNumber ||
       this.email !== this.initialState.email ||
       this.photoUrl !== this.initialState.photoUrl;
+  
+    // Validate email
+    if (this.email && this.email !== this.initialState.email) {
+      if (!this.isValidEmail(this.email)) {
+        this.emailError = 'Please enter a valid email address';
+      } else {
+        this.emailError = null;
+      }
+    } else {
+      this.emailError = null;
+    }
+  }
+
+  toggleEdit() {
+    this.isEditing = !this.isEditing;
+    if (this.isEditing) {
+      this.saveInitialState();
+    } else if (this.formChanged) {
+      this.onInputChange(); // Validate before saving
+      if (!this.emailError) {
+        this.saveChanges();
+      }
+    }
+    this.formChanged = false;
   }
 
   uidToContactIDUrl = "https://apag.digitalchurch.tech/getContactIdfromUid?uid=";
@@ -104,29 +122,34 @@ export class MyProfileComponent implements OnInit {
   }
 
 
-  async saveChanges() {
-    const storedData = localStorage.getItem('aminUserInfo');
-    this.uData = storedData ? JSON.parse(storedData) : null;
-    this.uiid = this.uData.user.uid;
-  
-    try {
-      const contactId = await this.getContactID(this.uiid);
-      let $emailQString: string = "email=" + this.email + "&conId=" + contactId;
-      let $emailUpdateURL: string = encodeURI('https://apag.digitalchurch.tech/profileUpdate?' + $emailQString);
-      
-      console.log('the url is: ', $emailUpdateURL);
-      console.log('Saving changes: contactid', contactId, 'this.phoneNumber:' + this.phoneNumber, 'this.email: ' + this.email, this.photoUrl);
-      
-      await this.doEmailUpdateHTTP($emailUpdateURL);
-      
-      this.formChanged = false;
-      this.saveInitialState();
-      this.showAlert('Profile updated successfully');
-    } catch (error) {
-      console.error("Error in saveChanges:", error);
-      this.showAlert('Failed to update profile');
-    }
+async saveChanges() {
+  if (!this.isValidEmail(this.email)) {
+    this.showAlert('Please enter a valid email address');
+    return;
   }
+
+  const storedData = localStorage.getItem('aminUserInfo');
+  this.uData = storedData ? JSON.parse(storedData) : null;
+  this.uiid = this.uData.user.uid;
+
+  try {
+    const contactId = await this.getContactID(this.uiid);
+    let $emailQString: string = "email=" + this.email + "&conId=" + contactId;
+    let $emailUpdateURL: string = encodeURI('https://apag.digitalchurch.tech/profileUpdate?' + $emailQString);
+    
+    console.log('the url is: ', $emailUpdateURL);
+    console.log('Saving changes: contactid', contactId, 'this.phoneNumber:' + this.phoneNumber, 'this.email: ' + this.email, this.photoUrl);
+    
+    await this.doEmailUpdateHTTP($emailUpdateURL);
+    
+    this.formChanged = false;
+    this.saveInitialState();
+    this.showAlert('Profile updated successfully');
+  } catch (error) {
+    console.error("Error in saveChanges:", error);
+    this.showAlert('Failed to update profile');
+  }
+}
   
 
   
@@ -152,7 +175,7 @@ export class MyProfileComponent implements OnInit {
       });
     });
   }
-  
+
   onSuccesfulProfileSubmit(message: string, action: string) {
     //1. show success message
 

@@ -16,11 +16,11 @@ export class PcincomeComponent  implements OnInit {
     
   }
 
-  onFirstButtonClick() {
+  onPastorGivingClick() {
     this.router.navigate(['/income']);
   }
 
-  onSecondButtonClick() {
+  onChurchGivingClick() {
     this.router.navigate(['/churchincome']);
   }
 
