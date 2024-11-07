@@ -6,6 +6,7 @@ import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
 } from "@angular/material/snack-bar";
+import envConfig from '../env.json';
 
 @Injectable({
   providedIn: "root",
@@ -32,6 +33,7 @@ export class AuthenticateService {
   zondID: string;
   theUName: any;
   errors: any;
+  memberProfileUrl: string;
 
   constructor(
     private http: HttpClient,
@@ -107,10 +109,11 @@ export class AuthenticateService {
     });
   }
 
+
   async doAminLogout() {
     console.log("logout called");
     //Delete localStorage
-    localStorage.removeItem("psReport");
+    localStorage.removeItem("memberProfile");
     localStorage.removeItem("aminUserInfo");
     localStorage.removeItem("userProfileInfo");
     localStorage.removeItem("latestReleaseInfo");

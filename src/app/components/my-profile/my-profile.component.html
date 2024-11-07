@@ -7,14 +7,6 @@
     <div class="profile-photo-section">
       <div class="profile-photo">
         <img [src]="photoUrl || '/assets/images/placeholder-profile.png'" alt="Profile Photo">
-       <!-- commented out edit option for photo
-        <button class="update-photo-btn" (click)="triggerFileInput()">
-          <i class="fas fa-camera"></i>
-        </button>
-        -->
-        <!-- and commented out file input
-        <input #fileInput type="file" (change)="onPhotoChange($event)" accept="image/*" style="display: none;">
-        -->
       </div>
       <div class="display-name">
         <span class="display-name-value">{{ displayName }}</span>
@@ -27,9 +19,15 @@
       </button>
       <div class="profile-field">
         <label>Email:</label>
-        <input [(ngModel)]="email" [disabled]="!isEditing" (ngModelChange)="onInputChange()">
+        <input [(ngModel)]="email" 
+               [disabled]="!isEditing" 
+               (ngModelChange)="onInputChange()" 
+               (blur)="onInputChange()"
+               placeholder="Email" 
+               required>
+        <div *ngIf="emailError" class="error-message email-error">{{ emailError }}</div>
+
       </div>
-      <!-- Phone number is hidden -->
       <button *ngIf="isEditing" class="save-btn" (click)="toggleEdit()" [disabled]="!formChanged" [class.active]="formChanged">
         Save
       </button>

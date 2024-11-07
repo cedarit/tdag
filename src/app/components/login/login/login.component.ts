@@ -119,6 +119,10 @@ export class LoginComponent implements OnInit {
     await this.router.navigate(['/forgotpassword']);
   }
 
+  async onNewUserWhatsApp() {
+    await this.router.navigate(['/whatsapp-support/:phoneNumber']);
+  }
+
   getErrorMessage() {
     if (this.myFormControl.hasError('required')) {
       // return 'This field is required';

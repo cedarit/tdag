@@ -100,7 +100,8 @@ export class ForgotpasswordComponent implements OnInit {
             let message = `OTP sent to this mobile number: ${this.forgotpwdform.value.phoneno}`;
             this.onSuccess(message, 'Success');
             this.gotError = false;
-            this.router.navigate(['setnewpassword', this.mobile]);
+            // this.router.navigate(['setnewpassword', this.mobile]);
+            this.router.navigate(['/setnewpassword', this.mobile]);
           } else {
             this.failMessage =
               'forgot password Error:' + this.newUserRes.error_message;
@@ -124,6 +125,6 @@ export class ForgotpasswordComponent implements OnInit {
   }
 
   onFailPwd(message: string, action: string) {
-    this._snackBar.open(message, action, { duration: 10000 });
+    this._snackBar.open(message, action, { duration: 20000 });
   }
 }

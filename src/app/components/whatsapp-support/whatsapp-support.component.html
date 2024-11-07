@@ -1,14 +1,52 @@
 <ion-header>
-  <ion-toolbar class="titleIonSetting1">
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title>WhatsApp Support</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content class="ion-padding">
-  <p style="color:white">Click the button below to start a WhatsApp chat with our support team.</p>
-  <ion-button expand="block" (click)="startWhatsAppChat()">
-    Chat with Support on WhatsApp
-  </ion-button>
+  <div class="whatsapp-support-container">
+    <h2 class="ion-text-center">Password Recovery Support</h2>
+    <p class="ion-text-center ion-padding-bottom">Enter your mobile number to start a WhatsApp chat with our support team.</p>
+    
+    <form [formGroup]="whatsappForm" (ngSubmit)="onSubmit()">
+      <ion-card>
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="floating">Mobile Number</ion-label>
+            <ion-input 
+              type="tel"
+              formControlName="phoneNumber"
+              placeholder="Enter 10 digit number"
+              maxlength="10"
+            ></ion-input>
+          </ion-item>
+          
+          <ion-text color="danger" *ngIf="whatsappForm.get('phoneNumber')?.invalid && 
+          (whatsappForm.get('phoneNumber')?.dirty || whatsappForm.get('phoneNumber')?.touched)" 
+          class="ion-padding-start">
+            Please enter a valid 10 digit mobile number
+          </ion-text>
+
+          <div class="ion-padding-top">
+            <ion-button 
+              expand="block" 
+              type="submit" 
+              [disabled]="whatsappForm?.invalid"
+            >
+              <ion-icon name="logo-whatsapp" slot="start"></ion-icon>
+              Start WhatsApp Chat
+            </ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </form>
+
+    <ion-text color="danger" *ngIf="gotError" class="ion-text-center ion-padding-top">
+      <p>{{ failMessage }}</p>
+    </ion-text>
+  </div>
 </ion-content>
