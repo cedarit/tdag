@@ -1,189 +1,361 @@
+// login.component.scss
 :host {
+  display: block;
+  min-height: 100vh;
+}
+
+.login-container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  position: relative;
+  overflow: hidden;
   display: flex;
-  // justify-content: center;
-  margin: 20px 0px;
+  flex-direction: column;
+  align-items: center; // Centers everything horizontally
 }
 
-* {
-  background-color: #020230;
-}
-.loginCard {
-  opacity: 0.4;
-  // background-color: darkseagreen;
-}
-.loginContent {
-  display: flex;
-  align-items: center;
-  --background: linear-gradient(
-      rgba(36, 70, 105, 0.74),
-      rgba(36, 70, 105, 0.74)
-    ),
-    0 0/100% 100% no-repeat;
-}
-
-.form-group {
-  margin-bottom: 16px; /* Adjust as needed */
-}
-
-.mat-label {
-  margin-right: 8px; /* Adjust as needed */
-}
-
-.mat-form-field {
+.header {
   width: 100%;
-  min-width: 150px;
+  max-width: 400px;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  .logo {
+    height: 50px;
+    margin-bottom: 1rem;
+    object-fit: contain;
+  }
+
+  .title {
+    color: white;
+    
+    h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin: 0.5rem 0 0;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+  }
 }
 
-mat-card-title,
-mat-card-content {
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 1rem;
+
+    ::ng-deep {
+      .mat-form-field-outline {
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      .mat-form-field-label {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .mat-input-element {
+        color: white;
+      }
+
+      .mat-icon {
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+  }
+}
+
+.actions {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+
+  button {
+    color: rgba(255, 255, 255, 0.7);
+    width: 100%;
+    
+    &:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
 }
 
-.error {
-  padding: 16px;
-  width: 150px;
-  color: white;
-  background-color: red;
+.submit-button {
+  width: 100%;
+  height: 48px;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  
+  mat-spinner {
+    margin: 0 auto;
+  }
 }
 
-.button {
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 0.5rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+
+  button {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    min-width: 64px;
+    padding: 0.5rem;
+
+    mat-icon {
+      font-size: 24px;
+      height: 24px;
+      width: 24px;
+    }
+
+    span {
+      font-size: 12px;
+    }
+  }
 }
 
-.signupBtn {
-  margin-bottom: 10px;
-  background-color: #29b6f6;
+// Add to your global styles or component styles
+.error-snackbar {
+  background: #f44336;
   color: white;
-  //  opacity: 0.4;
 }
 
-.forgotPassword {
-  margin-bottom: 10px;
-  background-color: rgb(233, 76, 76);
-  color: white;
+@media (max-width: 480px) {
+  .login-card {
+    padding: 1.5rem;
+  }
+
+  .header .title h1 {
+    font-size: 1.25rem;
+  }
+
+  .header .title h2 {
+    font-size: 1rem;
+  }
+}
+//******************************//
+// Added for login animation
+// login.component.scss
+
+
+// login.component.scss
+:host {
+  display: block;
+  min-height: 100vh;
 }
 
-.mat-card {
-  background: transparent !important;
+.login-container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  position: relative;
+  overflow: hidden;
 }
 
-.mat-stroked-button {
-  border: 1px solid #afa2a2;
-  padding: 0 15px;
-  line-height: 34px;
-  color: #afa2a2;
-  background: none !important;
-}
-.mat-button.mat-primary,
-.mat-icon-button.mat-primary,
-.mat-stroked-button.mat-primary {
-  border: 1px solid #afa2a2; //
-  padding: 0 15px;
-  line-height: 34px;
-  color: #afa2a2;
-  background: none !important;
-}
-
-/* Placeholder overrides */
-::ng-deep .mat-form-field-label {
-  color: #19bafa !important;
-}
-
-.formField {
-  padding: 0px;
-  background: none !important;
-}
-
-// new scss 15feb23 starts here
-
-.mainContainer {
+// Wave animations with better positioning
+.wave-container {
+  position: absolute;
+  width: 100%;
   height: 100%;
-  align-items: center; /* Vertical centering */
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
 }
 
-.welcome {
-  // color: #54565b !important;
-  color: whitesmoke;
+.wave {
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(transparent 60%, rgba(68, 85, 207, 0.1) 100%);
+  border-radius: 38% 42% 50% 50%;
+  animation: wave 12s infinite linear;
+
+  &.wave2 {
+    bottom: -120px;
+    background: linear-gradient(transparent 60%, rgba(68, 85, 207, 0.15) 100%);
+    animation: wave 16s infinite linear;
+  }
+
+  &.wave3 {
+    bottom: -140px;
+    background: linear-gradient(transparent 60%, rgba(68, 85, 207, 0.05) 100%);
+    animation: wave 20s infinite linear;
+  }
 }
 
-.mat-form-field-emailLabel {
+@keyframes wave {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0) rotate(360deg);
+  }
+}
+
+.content-container {
+  .content-container {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;  // Take full width to allow center alignment
+    max-width: 600px; // Match your app's max width
+    margin: 0 auto; // Center the container
+  }
+}
+
+
+.title-section {
+  width: 100%;          // Add this
   text-align: center;
-  background: none !important;
+  margin-bottom: 2rem;
+  display: flex;        // Add this
+  flex-direction: column; // Add this
+  align-items: center;  // Add this
+
+  .logo {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 1rem;
+    
+    // Specific styles for ion-img
+    ion-img {
+      height: 70px !important;
+      width: auto;
+      background: rgb(247, 246, 246) !important;
+      padding: 5px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  .welcome-text {
+    color: #333;
+    width: 100%;        // Add this
+    text-align: center; // Add this
+    
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    h2 {
+      font-size: 1.2rem;
+      color: #666;
+    }
+  }
 }
 
-.loginCard {
-  margin-top: 0%;
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.85); // Changed from 0.9 to 0.85 for more transparency
+  backdrop-filter: blur(10px);  // This creates a frosted glass effect
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2); // Adds subtle border
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);  // Subtle shadow
+  
+  mat-card-content {
+    padding: 2rem;
+  }
 }
 
-#username {
-  width: 150px;
-  background: #fcfbfd;
-  font-size: large;
-  margin-left: 10px;
-  align-items: center;
-  border-bottom: none;
-  padding-left: 5px;
-  border-left: 0px !important;
-  border-radius: 7px;
+.form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+
+  .field-icon {
+    margin-right: 8px;
+    color: #666;
+  }
+
+  ::ng-deep {
+    .mat-form-field-wrapper {
+      margin: 0;
+      padding: 0;
+    }
+
+    .mat-form-field-flex {
+      padding: 0 0.75em;
+      gap: 0.5em;
+      background: rgba(255, 255, 255, 0.9); // Slightly more opaque background for input fields
+      border-radius: 8px;
+    }
+
+    .mat-form-field-infix {
+      padding: 1em 0;
+      border-top: 0.5em solid transparent;
+    }
+
+    .mat-form-field-label-wrapper {
+      top: -1em;
+    }
+
+    .mat-form-field-label {
+      margin-top: 0.25em;
+    }
+
+    .mat-form-field-prefix {
+      top: 0.25em;
+    }
+
+    input.mat-input-element {
+      margin-top: 0.25em;
+    }
+  }
 }
 
-.password {
-  width: 150px;
-  background: #fcfbfd;
-  font-size: large;
-  margin-left: 18px;
-  margin-top: 0%;
-  border-bottom: none;
-  padding-left: 5px;
-  border-left: 40px !important;
-  border-radius: 0px;
-  background-color: none !important;
-  border-radius: 7px;
-}
-
-.login {
-  background: #fcfbfd;
-  border-radius: 0px;
-  background-color: hidden !important;
-  font-size: large;
-  border-radius: 0px;
-  margin-top: -15%;
-  border-bottom: none;
-  height: 33px;
-}
-
-.forgotPassword {
-  margin-top: -12px;
-}
-
-.mat-form-field-username {
-  display: none;
-  border-bottom: none;
-}
-
-.form-field-container {
+.action-buttons {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+  
+  button {
+    width: 100%;
+    color: #666;
+    
+    &:hover {
+      color: #333;
+    }
+  }
 }
 
-.form-row {
-  display: flex !important;
-  align-items: center !important;
-  margin-bottom: 0px !important;
+.submit-button {
+  width: 100%;
+  padding: 1.5rem;
+  font-size: 1rem;
+  background: linear-gradient(to right, #4455cf, #4466ef);
+  
+  &:hover {
+    background: linear-gradient(to right, #3344be, #3355de);
+  }
 }
-
-.form-row label {
-  margin-right: 3px !important;
-  // margin-top: 10px !important;
-  white-space: nowrap !important;
-}
-
-// .mainForm {
-
-.multiline-title {
-  white-space: normal; /* Allow multiple lines */
-  text-align: center;
-}
+//end of login animation
+//******************************//

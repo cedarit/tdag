@@ -53,8 +53,10 @@ import { VerifyandloginComponent } from './components/auth/verifyandlogin/verify
 import { WhatsAppSupportComponent } from './components/whatsapp-support/whatsapp-support.component';
 // import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { MyProfileComponent, ConfirmDialogComponent } from './components/my-profile/my-profile.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
-// import { ImageCropperModule } from 'ngx-image-cropper';
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,10 +90,14 @@ import { MyProfileComponent, ConfirmDialogComponent } from './components/my-prof
     WhatsAppSupportComponent,
     MyProfileComponent,
     ConfirmDialogComponent,
+    
   ],
   imports: [
     BrowserModule,
     MatAutocompleteModule,
+    MatCardModule,
+    MatIconModule,
+    MatFormFieldModule,
     MatInputModule,
     IonicModule.forRoot({
       backButtonText: '',

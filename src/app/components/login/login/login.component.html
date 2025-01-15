@@ -1,118 +1,77 @@
-<div class="Title">
-  <ion-img
-    style="
-      height: 50px !important;
-      font: bold;
-      background: rgb(247, 246, 246) !important;
-    "
-    src="../../../assets/images/APAG-logo.png"
-  ></ion-img>
-  <ion-title
-    class="multiline-title"
-    style="
-      color: white;
-      display: flex;
-      font-size: 17px;
-      text-align: center;
-      height: 57px;
-    "
-    class="welcome"
-    >Telugu District of SIAG <br />
-    WELCOME</ion-title
-  >
-</div>
-<div class="mainContainer">
-  <ion-content>
-    <div class="mainContainer">
-      <mat-card class="">
-        <mat-card-content>
-          <form [formGroup]="form" (ngSubmit)="loginSubmit()" class="mainForm">
-            <div
-              style="margin-top: 120px !important"
-              class="form-row"
-              fxLayout="row"
-              fxLayoutAlign="space-evenly  center"
-            >
-              <label for="userName" style="color: white">User Name: </label>
-              <input
-                id="username"
-                type="text"
-                matInput
-                placeholder="User Name"
-                formControlName="username"
-              />
-            </div>
-            <br />
+<div class="login-container">
+  <!-- Wave Background -->
+  <div class="wave-container">
+    <div class="wave"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+  </div>
 
-            <div
-              class="form-row"
-              fxLayout="row"
-              fxLayoutAlign="space-evenly  center"
-            >
-              <label for="password" style="color: white">Password: </label>
-              <input
-                [attr.type]="showPassword ? 'text' : 'password'"
-                [(ngModel)]="password"
-                name="password"
-                class="password"
-                type="password"
-                matInput
-                placeholder="Password"
-                formControlName="password"
-                (input)="handlePasswordInput($event)"
-              />
-            </div>
-            <br />
-            <mat-card class="forgotPassword">
-              <mat-card-content>
-                <div fxLayout="row" fxLayoutAlign="space-evenly center">
-                  <div class="button">
-                    <button
-                      type="button"
-                      mat-stroked-button
-                      color="secondary"
-                      (click)="onForgotPassword()"
-                    >
-                      Forgot Password?
-                    </button>
-                  </div>
-                </div>
-              </mat-card-content>
-            </mat-card>
-            <mat-card class="forgotPassword">
-              <mat-card-content>
-                <div fxLayout="row" fxLayoutAlign="space-evenly center">
-                  <div class="button">
-                    <button
-                      type="button"
-                      mat-stroked-button
-                      color="secondary"
-                      (click)="onNewUserWhatsApp()"
-                    >
-                      New User? - Get WhatsApp Support
-                    </button>
-                  </div>
-                </div>
-              </mat-card-content>
-            </mat-card>
-            <p *ngIf="error" class="error">
-              {{ error }}
-            </p>
-            <div fxLayout="row" fxLayoutAlign="space-evenly center">
-              <div class="button">
-                <button
-                  type="submit"
-                  mat-raised-button
-                  color="primary"
-                  [disabled]="!form.valid"
-                >
-                  Login
-                </button>
-              </div>
-            </div>
-          </form>
-        </mat-card-content>
-      </mat-card>  
+  <div class="content-container">
+    <!-- Logo and Title -->
+    <div class="title-section">
+      <ion-img 
+        src="../../../assets/images/APAG-logo.png" 
+        alt="SIAG Logo"
+        class="logo">
+      </ion-img>
+      <div class="welcome-text">
+        <h2><i>Let’s keep the oneness of the spirit - Eph. 4:3</i></h2>
+        <!-- <h2>Welcome</h2> -->
+      </div>
     </div>
-  </ion-content>
+
+    <!-- Login Card -->
+    <mat-card class="login-card">
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="loginSubmit()">
+          <!-- Username Field -->
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>-- Username</mat-label>
+            <mat-icon matPrefix class="field-icon">person</mat-icon>
+            <input 
+              matInput 
+              formControlName="username"
+              placeholder="Enter your username">
+          </mat-form-field>
+
+          <!-- Password Field -->
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>-- Password</mat-label>
+            <mat-icon matPrefix class="field-icon">lock</mat-icon>
+            <input 
+              matInput
+              [type]="hidePassword ? 'password' : 'text'"
+              formControlName="password"
+              placeholder="Enter your password">
+            <button 
+              mat-icon-button 
+              matSuffix 
+              (click)="hidePassword = !hidePassword" 
+              type="button">
+              <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons">
+            <button mat-button type="button" (click)="onForgotPassword()">
+              Forgot Password?
+            </button>
+            <button mat-button type="button" (click)="onNewUserWhatsApp()">
+              New User? - Get WhatsApp Support
+            </button>
+          </div>
+
+          <button 
+            mat-raised-button 
+            color="primary"
+            class="submit-button" 
+            type="submit" 
+            [disabled]="!form.valid">
+            Login
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
